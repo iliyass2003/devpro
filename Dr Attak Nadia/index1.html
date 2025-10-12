@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr attak nadia - Cabinet Médical à Rabat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary: #0050ff;
+            --secondary: #00aaff;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-blue: #e6f3ff;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #fff;
+            color: var(--dark);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 80, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 80, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 60px;
+            background: var(--gradient);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            padding: 15px 0;
+        }
+
+        header.scrolled {
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+     /* Style généraux pour le conteneur */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/api/placeholder/2000/1100') center/cover;
+    display: flex;
+    align-items: center;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    width: 50%;
+    padding-right: 30px;
+}
+
+.hero-image {
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
+}
+
+.hero-shape {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: var(--light-blue);
+    top: -50px;
+    right: -50px;
+    z-index: 0;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--gray);
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.floating-card {
+    position: absolute;
+    bottom: -30px;
+    right: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    animation: float 3s ease-in-out infinite;
+    width: 250px;
+}
+
+.floating-card-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--primary);
+    font-size: 20px;
+}
+
+.floating-card-text h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.floating-card-text p {
+    font-size: 14px;
+    color: var(--gray);
+    margin: 0;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* About Section */
+.about {
+    background-color: var(--light);
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: var(--dark);
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-image {
+    flex: 1;
+    position: relative;
+    padding: 20px;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.about-image:before {
+    content: '';
+    position: absolute;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    border: 3px solid var(--primary);
+    border-radius: 10px;
+    top: 40px;
+    left: 40px;
+    z-index: 0;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.about-content p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: var(--gray);
+}
+
+.about-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.stat-text {
+    font-size: 16px;
+    color: var(--gray);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .hero .container,
+    .about-container {
+        flex-direction: column;
+    }
+
+    .hero-content,
+    .hero-image,
+    .about-image,
+    .about-content {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .hero-image {
+        margin-top: 40px;
+        justify-content: center;
+    }
+
+    .about-image {
+        margin-bottom: 60px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-stats {
+        justify-content: center;
+    }
+
+    .floating-card {
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
+
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background: var(--gradient);
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            transition: height 0.5s ease;
+        }
+
+        .service-card:hover:before {
+            height: 5px;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--gradient);
+            color: white;
+            transform: rotateY(360deg);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 170, 255, 0.05);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+        }
+
+        .testimonials:after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 80, 255, 0.05);
+            border-radius: 50%;
+            bottom: -50px;
+            right: -50px;
+        }
+
+        .testimonials-container {
+            position: relative;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-slide {
+            flex: 0 0 auto;
+            width: calc(33.333% - 20px);
+            margin: 0 10px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            color: rgba(0, 80, 255, 0.1);
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .testimonial-rating {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: var(--gradient);
+            color: white;
+        }
+
+        /* Appointment Section */
+        .appointment {
+            background: linear-gradient(rgba(0, 80, 255, 0.9), rgba(0, 170, 255, 0.9)), url('/api/placeholder/2000/1100') center/cover;
+            color: white;
+        }
+
+        .appointment-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .appointment-form {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: var(--dark);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .appointment-info {
+            flex: 1;
+        }
+
+        .appointment-info h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .appointment-info p {
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .contact-text h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .working-hours {
+            margin-top: 40px;
+        }
+
+        .working-hours h4 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0;
+        }
+
+        .map-container {
+            height: 500px;
+            width: 100%;
+            position: relative;
+        }
+
+        .map-info {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 350px;
+            z-index: 10;
+        }
+
+        .map-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .map-contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .map-contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .map-contact-text p {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-widget h4 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-widget h4:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #aaa;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact-icon {
+            margin-right: 15px;
+            color: var(--primary);
+        }
+
+        .footer-contact-text {
+            color: #aaa;
+        }
+
+        .footer-newsletter p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            position: relative;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            border-radius: 50px;
+            color: white;
+        }
+
+        .newsletter-form button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--gradient);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #aaa;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 10px 20px rgba(0, 80, 255, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        .reveal {
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Floating Shapes */
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: float 8s infinite;
+        }
+
+        .shape-2 {
+            top: 60%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            background: var(--secondary);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s infinite;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            50% { border-radius: 30% 30% 70% 70% / 70% 30% 70% 30%; }
+            75% { border-radius: 70% 70% 30% 30% / 30% 70% 30% 70%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        /* Whatsapp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 99;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 960px;
+            }
+            .hero-content {
+                padding-right: 30px;
+            }
+            .hero h1 {
+                font-size: 42px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonial-slide {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                max-width: 720px;
+            }
+            .hero {
+                height: auto;
+                padding: 150px 0 100px;
+            }
+            .hero-content, .hero-image {
+                width: 100%;
+                padding-right: 0;
+            }
+            .hero-content {
+                margin-bottom: 50px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .section {
+                padding: 80px 0;
+            }
+            .about-container {
+                flex-direction: column;
+            }
+            .about-image:before {
+                top: 20px;
+                left: 20px;
+            }
+            .appointment-container {
+                flex-direction: column;
+            }
+            .map-info {
+                left: 20px;
+                right: 20px;
+                max-width: none;
+            }
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .service-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-slide {
+                width: calc(100% - 20px);
+            }
+            .about-stats {
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                width: 50%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-btns {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .about-stats {
+                flex-direction: column;
+            }
+            .stat-item {
+                width: 100%;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .floating-card {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Dr Nadia Attak<span>Cabinet Médical</span></div>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li><a href="#apropos" class="nav-link">À propos</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#temoignages" class="nav-link">Témoignages</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#rendez-vous" class="btn btn-sm">Rendez-vous</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <h1>Dr <span>Nadia Attak</span></h1>
+                <h2>Médecin généraliste à Rabat</h2>
+                <p>Forte de son expérience en soins de base et en médecine préventive, le Dr Attak vous accueille pour un suivi médical attentif, humain et professionnel.</p>
+                <div class="hero-btns">
+                    <a href="#rendez-vous" class="btn">Prendre rendez-vous</a>
+                    <a href="#contact" class="btn btn-outline">Nous contacter</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                <img src="image1.png" alt="Dr Nadia Attak">
+                <div class="hero-shape"></div>
+                <div class="floating-card">
+                    <div class="floating-card-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="floating-card-text">
+                        <h3>Consultation</h3>
+                        <p>Prenez rendez-vous aujourd'hui</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="about section">
+        <div class="container">
+            <h2 class="section-title">À propos du Dr Attak</h2>
+            <div class="about-container">
+                <div class="about-image" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="image1.png" alt="Dr Nadia Attak">
+                </div>
+                <div class="about-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <h2>Une médecin généraliste dévouée</h2>
+                    <p>Le Dr Nadia Attak est une professionnelle qualifiée en médecine générale, offrant des soins de première ligne à tous les âges. Elle prend en charge la prévention, le diagnostic et le traitement des pathologies courantes. Toujours à l'écoute, elle oriente ses patients vers des spécialistes si nécessaire. Son cabinet est situé à Rue Al Kharoub, Avenue Annakhil, Résidence Al Ahd à Rabat.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="10">0</div>
+                            <div class="stat-text">Années d'expérience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="4000">0</div>
+                            <div class="stat-text">Patients suivis</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="5">0</div>
+                            <div class="stat-text">Jours de consultation / semaine</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Services Section -->
+   <section id="services" class="services section">
+    <div class="container">
+        <h2 class="section-title">Nos services médicaux</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="service-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h3>Consultation générale</h3>
+                <p>Suivi médical pour enfants, adultes et personnes âgées, diagnostic et traitement des maladies courantes.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="service-icon">
+                    <i class="fas fa-notes-medical"></i>
+                </div>
+                <h3>Prévention et dépistage</h3>
+                <p>Bilan de santé, vaccination, conseils de prévention, suivi des maladies chroniques.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <div class="service-icon">
+                    <i class="fas fa-user-nurse"></i>
+                </div>
+                <h3>Suivi personnalisé</h3>
+                <p>Écoute attentive, conseils médicaux adaptés et accompagnement dans votre parcours de santé.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section id="temoignages" class="testimonials section">
+        <div class="container testimonials-container">
+            <h2 class="section-title">Témoignages de nos patients</h2>
+            <div class="testimonial-slider" id="testimonial-slider">
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-duration="800">
+                    <div class="testimonial-quote"><i class="fas fa-quote-right"></i></div>
+                    <div class="testimonial-content">
+                        <p>An exceptional doctor, very attentive and she listen to her patients. I highly recommend.</p>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="salma.png" alt="Patient">
+                        <div class="author-info">
+                            <h4>Salma Elforsi</h4>
+                            <p>2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="testimonial-quote"><i class="fas fa-quote-right"></i></div>
+                    <div class="testimonial-content">
+                        <p>The moroccan Dr House. Can handle, diagnosis and hopefully treat any decease. Share a lot of positive energy with patient. Definitely recommend!</p>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="Mohammed.png" alt="Patient">
+                        <div class="author-info">
+                            <h4>Mohammed Rachid Tazi</h4>
+                            <p>2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                    <div class="testimonial-quote"><i class="fas fa-quote-right"></i></div>
+                    <div class="testimonial-content">
+                        <p>Chère Docteur Attak Nadia,
+                            Je tenais à vous exprimer ma profonde gratitude pour votre disponibilité, votre écoute attentive et votre diagnostic précis....</p>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="fatim.png" alt="Patient">
+                        <div class="author-info">
+                            <h4>fatim ezzahra el khattari</h4>
+                            <p>2021</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" id="prev-testimonial"><i class="fas fa-arrow-left"></i></button>
+                <button class="slider-btn next-btn" id="next-testimonial"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="rendez-vous" class="appointment section">
+        <div class="container appointment-container">
+            <div class="appointment-info" data-aos="fade-right" data-aos-duration="1000">
+                <h2 class="section-title" style="color: white; text-align: left;">Prenez rendez-vous</h2>
+                <p>Nous nous engageons à vous offrir les meilleurs soins médicaux. Pour une consultation avec la Dre Nadia Attak, veuillez utiliser le formulaire ci-contre ou nous contacter directement.</p>
+    
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Téléphone</h4>
+                        <p>05377-12829 / +212661353809</p>
+                    </div>
+                </div>
+    
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Adresse</h4>
+                        <p>Rue Al Kharoub, Avenue Annakhil Secteur 16, Résidence Al Ahd Imm 7, Appt 1, Rabat</p>
+                    </div>
+                </div>
+    
+                <div class="working-hours">
+                    <h4>Horaires d'ouverture</h4>
+                    <div class="hours-item"><span>Lundi - Vendredi</span><span>9:00 - 18:00</span></div>
+                    <div class="hours-item"><span>Samedi</span><span>9:00 - 12:00</span></div>
+                    <div class="hours-item"><span>Dimanche</span><span>Fermé</span></div>
+                </div>
+            </div>
+    
+            <div class="appointment-form" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                <h3>Demande de rendez-vous</h3>
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" class="form-control" placeholder="Votre nom complet" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Votre adresse email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Votre numéro de téléphone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date souhaitée</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Heure souhaitée</label>
+                        <select id="time" class="form-control" required>
+                            <option value="">Sélectionnez une heure</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Décrivez brièvement votre problème médical"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Envoyer la demande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Map Section -->
+    <section id="contact" class="map-section">
+        
+            <!-- Google Maps iframe -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12117.298695038531!2d-6.868437999999999!3d33.9560761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7133b505928ef%3A0x9ddb812071f40c04!2sDr%20Attak%20Nadia!5e1!3m2!1sen!2sma!4v1745931287529!5m2!1sen!2sma" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-widget footer-about">
+                    <h4>À propos</h4>
+                    <p>Le cabinet médical du Dr Attak Nadia offre des soins médicaux de qualité dans un environnement confortable et accueillant à Rabat.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-widget footer-links">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#temoignages">Témoignages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#rendez-vous">Rendez-vous</a></li>
+                    </ul>
+                </div>
+                <div class="footer-widget footer-contact">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="footer-contact-text">
+                            <p>Rue Al Kharoub, Avenue Annakhil Secteur 16, Résidence Al Ahd Imm 7, Appt 1 Rez-de-chaussée, Rabat</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="footer-contact-text">
+                            <p>05377-12829</p>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="footer-contact-text">
+                            <p>attaknadia@yahoo.fr</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-widget footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Abonnez-vous à notre newsletter pour recevoir des conseils de santé et les dernières actualités.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Cabinet Dr ATTAK Nadia. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init();
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu
+            const hamburger = document.getElementById('hamburger-menu');
+            const navMenu = document.getElementById('nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a nav link
+            document.querySelectorAll('.nav-link').forEach(item => {
+                item.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Testimonial slider
+            const testimonialSlider = document.getElementById('testimonial-slider');
+            const prevBtn = document.getElementById('prev-testimonial');
+            const nextBtn = document.getElementById('next-testimonial');
+            
+            if (testimonialSlider && prevBtn && nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    testimonialSlider.scrollBy({ left: 300, behavior: 'smooth' });
+                });
+                
+                prevBtn.addEventListener('click', function() {
+                    testimonialSlider.scrollBy({ left: -300, behavior: 'smooth' });
+                });
+            }
+
+            // Counter animation
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCount();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(counter);
+            });
+
+            // Back to top button
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('active');
+                } else {
+                    backToTopBtn.classList.remove('active');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Form submission
+            const appointmentForm = document.getElementById('appointment-form');
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simulate form submission
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerText;
+                    
+                    submitBtn.innerText = 'Envoi en cours...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(function() {
+                        submitBtn.innerText = 'Envoyé avec succès!';
+                        
+                        setTimeout(function() {
+                            appointmentForm.reset();
+                            submitBtn.innerText = originalText;
+                            submitBtn.disabled = false;
+                            
+                            // Success message
+                            alert('Votre demande de rendez-vous a été envoyée avec succès. Nous vous contacterons bientôt pour confirmer.');
+                        }, 2000);
+                    }, 2000);
+                });
+            }
+
+            // Reveal animations on scroll
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            function reveal() {
+                revealElements.forEach(element => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', reveal);
+            reveal(); // Call once on load
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Floating animations
+            const floatingElements = document.querySelectorAll('.floating-card, .shape');
+            
+            floatingElements.forEach(element => {
+                let randomDelay = Math.random() * 2;
+                element.style.animationDelay = `${randomDelay}s`;
+            });
+        });
+
+        // Add custom animations for service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.service-icon').style.transform = 'rotateY(360deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.service-icon').style.transform = 'rotateY(0deg)';
+            });
+        });
+
+        // Whatsapp click handler
+        document.querySelector('.whatsapp-btn').addEventListener('click', function() {
+            window.open('https://wa.me/+212661353809.', '_blank');
+        });
+    </script>
+</body>
+</html>

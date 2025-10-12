@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le point de vente Rabat - Agence Immobilière</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Variables et polices */
+        :root {
+            --primary: #ff0074;
+            --secondary: #9e0054;
+            --light: #ffffff;
+            --dark: #333333;
+            --gray: #f8f8f8;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            overflow-x: hidden;
+            background-color: white;
+        }
+        
+        /* Loader */
+        .loader-wrapper {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid var(--gray);
+            border-top: 8px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Header et Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.5s;
+        }
+        
+        header.sticky {
+            background: var(--light);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 15px 40px;
+        }
+        
+       /* Styles existants */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--light);
+    transition: 0.5s;
+}
+
+header.sticky .logo {
+    color: var(--secondary);
+}
+
+.logo span {
+    color: var(--primary);
+}
+.logo-img {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+}
+
+.navbar li {
+    margin-left: 30px;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: var(--light);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header.sticky .navbar li a {
+    color: var(--dark);
+}
+
+.navbar li a:hover, header.sticky .navbar li a:hover {
+    color: var(--primary);
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--light);
+}
+
+header.sticky .menu-toggle {
+    color: var(--dark);
+}
+
+/* Ajout cette règle pour masquer le bouton close-menu en mode desktop */
+.close-menu {
+    display: none;
+}
+
+/* Styles pour le mode mobile */
+@media screen and (max-width: 991px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        padding: 80px 20px;
+        transition: 0.3s;
+        z-index: 1000;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+    
+    .navbar.active {
+        right: 0;
+    }
+    
+    .navbar li {
+        margin: 15px 0;
+    }
+    
+    .navbar li a {
+        color: var(--dark);
+    }
+    .navbar li a:hover, header.sticky .navbar li a:hover {
+    color: var(--primary);
+}
+    /* Afficher le bouton close uniquement en mode mobile quand le menu est ouvert */
+    .close-menu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--dark);
+    }
+}
+        /* Hero Section */
+        #hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+    background: linear-gradient(to right, rgba(20, 30, 48, 0.8), rgba(36, 59, 85, 0.8)),
+                url('/api/placeholder/1920/1080') center/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3);
+}
+        
+        .hero-content {
+            text-align: center;
+            color: var(--light);
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.5s;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 1s;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: 0.3s;
+            border: 2px solid var(--primary);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 1.5s;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--light);
+        }
+        
+        .btn.outline {
+            background: transparent;
+            margin-left: 10px;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--light);
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* About Section */
+        section {
+            padding: 80px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .about-text h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .about-feature i {
+            color: var(--primary);
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        
+        /* Services Section */
+        #services {
+            background-color: var(--gray);
+        }
+        
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .service-box {
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            width: calc(33.33% - 30px);
+            min-width: 250px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .service-box:hover::before {
+            height: 100%;
+        }
+        
+        .service-box i {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: 0.5s;
+        }
+        
+        .service-box h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            transition: 0.5s;
+        }
+        
+        .service-box p {
+            color: #777;
+            line-height: 1.6;
+            transition: 0.5s;
+        }
+        
+        .service-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-box:hover i,
+        .service-box:hover h3,
+        .service-box:hover p {
+            color: var(--light);
+        }
+        
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .portfolio-filter button {
+            border: none;
+            background: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #777;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.3s;
+        }
+        
+        .portfolio-filter button.active,
+        .portfolio-filter button:hover {
+            color: var(--primary);
+        }
+        
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,0,116,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        
+        .portfolio-overlay h3 {
+            color: var(--light);
+            margin-bottom: 10px;
+            transform: translateY(30px);
+            transition: 0.5s;
+        }
+        
+        .portfolio-overlay p {
+            color: var(--light);
+            transform: translateY(30px);
+            transition: 0.5s;
+            transition-delay: 0.1s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+        
+        /* Testimonials Section */
+        #testimonials {
+            background-color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-container {
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card {
+            flex: 0 0 calc(33.33% - 30px);
+            margin: 0 15px;
+            min-width: 280px;
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '\\201C';
+            font-size: 80px;
+            color: rgba(255,0,116,0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            z-index: 0;
+            font-family: serif;
+        }
+        
+        .testimonial-rating {
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-rating i {
+            color: gold;
+            margin-right: 3px;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .testimonial-arrow:hover {
+            background: var(--secondary);
+        }
+        
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/api/placeholder/1920/1080') center/cover no-repeat;
+            color: var(--light);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        #contact h2{
+            color:#f8f8f8
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            color: var(--light);
+            transition: 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+        
+        /* Map Section */
+        #map {
+            height: 400px;
+            width: 100%;
+            background-color: #eee;
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary);
+            color: var(--light);
+            padding: 20px 30px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 2;
+            transition: 0.3s;
+        }
+        
+        .map-overlay:hover {
+            background: var(--secondary);
+        }
+        
+        .map-overlay i {
+            margin-right: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #aaa;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--primary);
+            padding-left: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            color: var(--light);
+            transition: 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
+            color: #aaa;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary);
+        }
+        
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            transform: translateY(50px);
+            transition: 0.5s;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .modal h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .modal p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .service-box {
+                width: calc(50% - 30px);
+            }
+            
+            .testimonial-card {
+                flex: 0 0 calc(50% - 30px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            header.sticky {
+                padding: 10px 20px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .navbar {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--light);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 80px;
+                transition: 0.5s;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            }
+            
+            .navbar.active {
+                right: 0;
+            }
+            
+            .navbar li {
+                margin: 0;
+                padding: 15px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            .navbar li a {
+                color: var(--dark) !important;
+            }
+            .navbar li a:hover, header.sticky .navbar li a:hover {
+               color: var(--primary);
+            }
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 24px;
+                cursor: pointer;
+                color: var(--dark);
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-box {
+                width: 100%;
+            }
+            
+            .testimonial-card {
+                flex: 0 0 calc(100% - 30px);
+            }
+            
+            .contact-info, .contact-form {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+    
+    <header>
+        <a href="#" class="logo">
+            <img src="imo-removebg-preview.png" alt="Logo LePointDeVente" class="logo-img">
+            Le<span>Point</span>DeVente</a>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="navbar">
+            <div class="close-menu">
+                <i class="fas fa-times"></i>
+            </div>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Propriétés</a></li>
+            <li><a href="#testimonials">Témoignages</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Votre partenaire immobilier à Rabat</h1>
+            <p>Le point de vente Rabat vous accompagne dans tous vos projets immobiliers résidentiels et commerciaux, avec une équipe jeune et ambitieuse prête à répondre à vos attentes.</p>
+            <a href="#about" class="btn">Découvrir</a>
+            <a href="#contact" class="btn outline">Nous contacter</a>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>À propos de nous</h2>
+                <p>Découvrez notre agence immobilière et notre engagement envers l'excellence et la satisfaction client.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="karim.png" alt="Notre agence">
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <h3>Le point de vente Rabat</h3>
+                    <p>Notre agence immobilière propose de l'immobilier résidentiel et commercial et fournit son assistance professionnelle à toute transaction qu'il s'agisse d'investissement ou de vente de biens immobiliers à Rabat.</p>
+                    <p>Nous avons le privilège de travailler avec les clients du monde professionnel et les particuliers. Nous sommes exigeants dans la gestion des intérêts, des acquéreurs, des propriétaires et des locataires.</p>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Équipe jeune et ambitieuse</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Innovation constante pour répondre à vos attentes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Nos Services</h2>
+                <p>Découvrez notre gamme complète de services immobiliers professionnels.</p>
+            </div>
+            <div class="services-container">
+                <div class="service-box" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-home"></i>
+                    <h3>Vente immobilière</h3>
+                    <p>Nous vous accompagnons dans la vente de votre bien immobilier avec une stratégie marketing personnalisée.</p>
+                </div>
+                <div class="service-box" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-key"></i>
+                    <h3>Achat immobilier</h3>
+                    <p>Trouvez le bien immobilier idéal correspondant à vos critères grâce à notre expertise du marché local.</p>
+                </div>
+                <div class="service-box" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-building"></i>
+                    <h3>Immobilier commercial</h3>
+                    <p>Solutions immobilières adaptées aux entreprises et aux investisseurs dans le secteur commercial.</p>
+                </div>
+                <div class="service-box" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Service de relocalisation</h3>
+                    <p>Nous facilitons votre installation à Rabat avec un service complet d'accompagnement à la mobilité.</p>
+                </div>
+                <div class="service-box" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-search"></i>
+                    <h3>Estimation gratuite</h3>
+                    <p>Obtenez une évaluation professionnelle de la valeur de votre bien immobilier sur le marché actuel.</p>
+                </div>
+                <div class="service-box" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Conseil en investissement</h3>
+                    <p>Bénéficiez de conseils personnalisés pour optimiser vos investissements immobiliers à Rabat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Nos Propriétés</h2>
+                <p>Découvrez notre sélection de biens immobiliers disponibles à Rabat.</p>
+            </div>
+            <div class="portfolio-filter" data-aos="fade-up">
+                <button class="active" data-filter="all">Tous</button>
+                <button data-filter="residential">Résidentiel</button>
+                <button data-filter="commercial">Commercial</button>
+                <button data-filter="investment">Investissement</button>
+            </div>
+            <div class="portfolio-container" data-aos="fade-up">
+                <div class="portfolio-item residential">
+                    <img src="pexels-harriet-b-392993362-17115338.jpg" alt="Appartement moderne">
+                    <div class="portfolio-overlay">
+                        <h3>Appartement moderne</h3>
+                        <p>Agdal, Rabat</p>
+                    </div>
+                </div>
+                <div class="portfolio-item commercial">
+                    <img src="/api/placeholder/400/250" alt="Local commercial">
+                    <div class="portfolio-overlay">
+                        <h3>Local commercial</h3>
+                        <p>Centre-ville, Rabat</p>
+                    </div>
+                </div>
+                <div class="portfolio-item residential">
+                    <img src="pexels-ahmetcotur-31817157.jpg" alt="Villa luxueuse">
+                    <div class="portfolio-overlay">
+                        <h3>Villa luxueuse</h3>
+                        <p>Souissi, Rabat</p>
+                    </div>
+                </div>
+                <div class="portfolio-item investment">
+                    <img src="/api/placeholder/400/250" alt="Immeuble de rapport">
+                    <div class="portfolio-overlay">
+                        <h3>Immeuble de rapport</h3>
+                        <p>Hassan, Rabat</p>
+                    </div>
+                </div>
+                <div class="portfolio-item commercial">
+                    <img src="pexels-tima-miroshnichenko-9572699.jpg" alt="Bureaux modernes">
+                    <div class="portfolio-overlay">
+                        <h3>Bureaux modernes</h3>
+                        <p>Hay Riad, Rabat</p>
+                    </div>
+                </div>
+                <div class="portfolio-item residential">
+                    <img src="pexels-heyho-6969987.jpg" alt="Duplex avec terrasse">
+                    <div class="portfolio-overlay">
+                        <h3>Duplex avec terrasse</h3>
+                        <p>Agdal, Rabat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Témoignages Clients</h2>
+                <p>Découvrez ce que nos clients disent de nos services immobiliers.</p>
+            </div>
+            <div class="testimonial-container" data-aos="fade-up">
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">L'équipe du Point de Vente Rabat a été exceptionnelle dans notre recherche de logement. Professionnalisme et réactivité impeccables !</p>
+                        <div class="testimonial-author">
+                            <img src="/api/placeholder/50/50" alt="Client">
+                            <div class="author-info">
+                                <h4>Mohammed Alami</h4>
+                                <p>Client satisfait</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">Service de relocalisation parfait ! Ils ont rendu notre installation à Rabat simple et sans stress. Je recommande vivement.</p>
+                        <div class="testimonial-author">
+                            <img src="/api/placeholder/50/50" alt="Client">
+                            <div class="author-info">
+                                <h4>Sarah Bennis</h4>
+                                <p>Expatriée</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">Pour mon investissement commercial, j'ai bénéficié de conseils précieux qui m'ont permis de faire un excellent choix. Merci !</p>
+                        <div class="testimonial-author">
+                            <img src="/api/placeholder/50/50" alt="Client">
+                            <div class="author-info">
+                                <h4>Karim Tazi</h4>
+                                <p>Investisseur</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <div class="testimonial-arrow prev-testimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="testimonial-arrow next-testimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contactez-nous</h2>
+                <p>N'hésitez pas à nous contacter pour toute question ou demande.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Informations de contact</h3>
+                    <p>Notre équipe est à votre disposition pour vous aider dans tous vos projets immobiliers à Rabat.</p>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Avenue Abtal, magasin 24, Agdal Rabat, CP 10090</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>06 63 26 81 68</p>
+                            <p>06 88 60 88 82</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>karimlibrahimi@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Votre numéro de téléphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Sujet de votre message">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Votre message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh-->
+         <!-- Map Section -->
+    <div id="map">
+        <div class="map-overlay" id="loadMap">
+            <i class="fas fa-map-marker-alt"></i> Cliquez pour afficher la carte
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Le point de vente Rabat</h4>
+                    <p>Votre partenaire immobilier à Rabat. Notre agence immobilière propose de l'immobilier résidentiel et commercial et fournit son assistance professionnelle à toute transaction.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Propriétés</a></li>
+                        <li><a href="#testimonials">Témoignages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Vente immobilière</a></li>
+                        <li><a href="#">Achat immobilier</a></li>
+                        <li><a href="#">Immobilier commercial</a></li>
+                        <li><a href="#">Service de relocalisation</a></li>
+                        <li><a href="#">Conseil en investissement</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Avenue Abtal, magasin 24, Agdal Rabat, CP 10090</p>
+                    <p><i class="fas fa-phone"></i> 06 63 26 81 68 / 06 88 60 88 82</p>
+                    <p><i class="fas fa-envelope"></i> karimlibrahimi@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Le point de vente Rabat. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="propertyModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>Détails de la propriété</h3>
+            <div class="modal-body">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+    <!--hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh-->
+   
+    
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script>
+       // Wait for document to load
+document.addEventListener('DOMContentLoaded', function() {
+    // Preloader
+    window.addEventListener('load', function() {
+        const loaderWrapper = document.querySelector('.loader-wrapper');
+        loaderWrapper.style.opacity = '0';
+        setTimeout(() => {
+            loaderWrapper.style.display = 'none';
+        }, 500);
+    });
+    
+    // Initialize AOS Animation Library
+    AOS.init({
+        duration: 1000,
+        once: true,
+        mirror: false
+    });
+    
+    // Handle sticky header
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('sticky');
+            document.querySelector('.back-to-top').classList.add('active');
+        } else {
+            header.classList.remove('sticky');
+            document.querySelector('.back-to-top').classList.remove('active');
+        }
+    });
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbar = document.querySelector('.navbar');
+    const closeMenu = document.querySelector('.close-menu');
+    
+    menuToggle.addEventListener('click', function() {
+        navbar.classList.add('active');
+    });
+    
+    closeMenu.addEventListener('click', function() {
+        navbar.classList.remove('active');
+    });
+    
+    // Close mobile menu when clicking on a nav item
+    const navItems = document.querySelectorAll('.navbar li a');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navbar.classList.remove('active');
+        });
+    });
+    
+    // Get portfolio items once for all functions
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    // Portfolio Filter
+    const filterButtons = document.querySelectorAll('.portfolio-filter button');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to current button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+    
+    // Testimonial Slider
+    const testimonialSlider = document.querySelector('.testimonial-slider');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const prevTestimonial = document.querySelector('.prev-testimonial');
+    const nextTestimonial = document.querySelector('.next-testimonial');
+    
+    let currentSlide = 0;
+    let slideWidth = window.innerWidth <= 768 ? 100 : window.innerWidth <= 992 ? 50 : 33.33;
+    
+    function updateSlider() {
+        testimonialSlider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+    }
+    
+    prevTestimonial.addEventListener('click', function() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlider();
+        }
+    });
+    
+    nextTestimonial.addEventListener('click', function() {
+        const maxSlide = testimonialCards.length - (window.innerWidth <= 768 ? 1 : window.innerWidth <= 992 ? 2 : 3);
+        if (currentSlide < maxSlide) {
+            currentSlide++;
+            updateSlider();
+        }
+    });
+    
+    // Adjust slider on window resize
+    window.addEventListener('resize', function() {
+        const newSlideWidth = window.innerWidth <= 768 ? 100 : window.innerWidth <= 992 ? 50 : 33.33;
+        if (newSlideWidth !== slideWidth) {
+            slideWidth = newSlideWidth;
+            currentSlide = 0; // Reset to first slide
+            updateSlider();
+        }
+    });
+    
+    // Handle Portfolio Modal
+    const propertyModal = document.querySelector('#propertyModal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalBody = document.querySelector('.modal-body');
+    
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const title = this.querySelector('h3').textContent;
+            const location = this.querySelector('p').textContent;
+            const image = this.querySelector('img').src;
+            
+            const modalContent = `
+                <div class="property-modal-content">
+                    <img src="${image}" alt="${title}" style="width: 100%; border-radius: 5px; margin-bottom: 20px;">
+                    <h3>${title}</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ${location}</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, magna at ultricies lacinia, metus odio lacinia nunc, vel varius massa nibh vel dui.</p>
+                    <p><strong>Prix:</strong> Sur demande</p>
+                    <p><strong>Caractéristiques:</strong> 3 chambres, 2 salles de bain, 120m²</p>
+                    <a href="#contact" class="btn" id="closeModalContact">Demander plus d'informations</a>
+                </div>
+            `;
+            
+            modalBody.innerHTML = modalContent;
+            propertyModal.classList.add('active');
+            
+            document.getElementById('closeModalContact').addEventListener('click', function() {
+                propertyModal.classList.remove('active');
+            });
+        });
+    });
+    
+    modalClose.addEventListener('click', function() {
+        propertyModal.classList.remove('active');
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target === propertyModal) {
+            propertyModal.classList.remove('active');
+        }
+    });
+    
+    // Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Here you would normally send the data to a server
+        // For this demo, we'll just show a success message
+        contactForm.innerHTML = `
+            <div style="text-align: center; padding: 40px 0;">
+                <i class="fas fa-check-circle" style="font-size: 60px; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3>Message envoyé avec succès!</h3>
+                <p>Merci ${name} de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
+            </div>
+        `;
+    });
+    
+    // Map Loading
+    const loadMap = document.getElementById('loadMap');
+    loadMap.addEventListener('click', function() {
+        this.style.display = 'none';
+        document.getElementById('map').innerHTML = `
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48461.14430346167!2d-6.966500851367189!3d33.97020570000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c8f35a5b9f5%3A0xfcb99218f6b06d44!2sLE%20POINT%20DE%20VENTE!5e1!3m2!1sen!2sma!4v1745953527310!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        `;
+    });
+    
+    // Back to Top Button
+    const backToTop = document.querySelector('.back-to-top');
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Scroll Animations
+    const animateElements = document.querySelectorAll('.animate');
+    
+    function checkScroll() {
+        animateElements.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                el.classList.add('active');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Check on page load
+});
+    </script>
+</body>
+</html>
