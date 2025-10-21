@@ -3,1060 +3,787 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Développeur Web</title>
+    <title>Sites Web Premium | 1 Mois Gratuit</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-     :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #60a5fa;
-            --secondary: #10b981;
-            --secondary-dark: #059669;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --gray-light: #cbd5e1;
-            --accent: #f59e0b;
-            --accent-dark: #d97706;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px;
+
+        :root {
+            --primary: #0066ff;
+            --secondary: #00d4ff;
+            --dark: #0a0e27;
+            --light: #ffffff;
+            --accent: #ff3366;
+            --gray: #6b7280;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
-        
+
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        /* Preloader */
-        .preloader {
+
+        /* Navigation Ultra-Moderne */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: var(--light);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        
-        .preloader.loaded {
-            opacity: 0;
-            visibility: hidden;
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
-        
-        .loader {
-            width: 48px;
-            height: 48px;
-            border: 5px solid var(--primary-light);
-            border-bottom-color: var(--primary);
-            border-radius: 50%;
-            animation: rotate 1s linear infinite;
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
         }
-        
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-3);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light);
+            margin: 5px;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section Ultra-Premium */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content .highlight {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Badge OFFRE */
+        .offer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--gradient-2);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Boutons Premium */
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-3);
+            color: var(--dark);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--light);
+        }
+
+        /* Hero Image avec effet 3D */
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Section Offre PREMIUM */
+        .offer-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--dark) 0%, #1a1f3a 100%);
+            position: relative;
+        }
+
+        .offer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Carte Offre Principale */
+        .main-offer-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 30px;
+            padding: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .main-offer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        /* Header & Navigation */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-        
-        header.scrolled {
-            padding: 0.5rem 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            position: relative;
-            z-index: 2;
-            transition: var(--transition);
-        }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        .logo:hover {
-            transform: translateY(-2px);
-            text-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-            position: relative;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .burger {
-            display: none;
-            cursor: pointer;
-            z-index: 2;
-        }
-        
-        .burger div {
-            width: 25px;
-            height: 3px;
-            background-color: var(--dark);
-            margin: 5px;
-            border-radius: 3px;
-            transition: var(--transition);
-        }
-        
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-        }
-        
-        .hero-text {
-            flex: 1;
-            animation: fadeInLeft 1.2s ease forwards;
-        }
-        
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
+        .price-tag {
+            font-size: 5rem;
+            font-weight: 900;
+            background: var(--gradient-3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero-text p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+            margin: 1rem 0;
             position: relative;
-            overflow: hidden;
             z-index: 1;
         }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-dark);
-            transition: var(--transition);
-            border-radius: 50px;
-            z-index: -1;
+
+        .price-tag small {
+            font-size: 2rem;
+            text-decoration: line-through;
+            opacity: 0.5;
         }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn:hover::before {
-            width: 100%;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            margin-left: 1rem;
-        }
-        
-        .btn-outline::before {
-            background: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            color: white;
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+
+        .trial-text {
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 2rem;
             position: relative;
-            animation: floatUpDown 5s ease-in-out infinite;
+            z-index: 1;
         }
-        
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            animation: fadeInRight 1.2s ease forwards;
+
+        .guarantee {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            border-radius: 50px;
+            color: #10b981;
+            font-weight: 700;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
         }
-        
-        .hero-image img:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-        
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            border-radius: 50%;
-        }
-        
-        .shape-1 {
-            width: 150px;
-            height: 150px;
-            background: var(--primary);
-            top: 10%;
-            left: 10%;
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .shape-2 {
-            width: 80px;
-            height: 80px;
-            background: var(--secondary);
-            top: 60%;
-            left: 15%;
-            animation: float 10s ease-in-out infinite;
-        }
-        
-        .shape-3 {
-            width: 100px;
-            height: 100px;
-            background: var(--primary);
-            bottom: 10%;
-            right: 20%;
-            animation: float 7s ease-in-out infinite;
-        }
-        
-        .shape-4 {
-            width: 120px;
-            height: 120px;
-            background: var(--accent);
-            top: 20%;
-            right: 10%;
-            animation: float 9s ease-in-out infinite;
-        }
-        
-        .shape-5 {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary);
-            bottom: 25%;
-            left: 30%;
-            animation: float 11s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-        }
-        
-        @keyframes floatUpDown {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-        
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-70px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(70px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        /* Services Section */
-        #services {
-            padding: 6rem 0;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
+
+        /* Grille des Inclusions */
+        .inclusions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
-        
-        .service-card {
-            background: white;
-            border-radius: 12px;
+
+        .inclusion-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            text-align: center;
-            border-bottom: 4px solid transparent;
+            transition: all 0.4s;
         }
-        
-        .service-card:hover {
+
+        .inclusion-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-bottom: 4px solid var(--primary);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
         }
-        
-        .service-icon {
-            background: var(--primary);
-            color: white;
+
+        .inclusion-icon {
             width: 70px;
             height: 70px;
-            border-radius: 50%;
+            background: var(--gradient-3);
+            border-radius: 20px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 1.8rem;
-            margin: 0 auto 1.5rem;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .service-card h3 {
+
+        .inclusion-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--light);
         }
-        
-        .service-card p {
-            color: var(--gray);
+
+        .inclusion-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
         }
-        
-        /* Portfolio Section */
-        #portfolio {
-            padding: 6rem 0;
-            background-color: #f8fafc;
+
+        .value-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 51, 102, 0.2);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 1rem;
         }
-        
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #1a1f3a 0%, var(--dark) 100%);
         }
-        
-        .filter-btn {
-            background: transparent;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            margin: 0.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            color: var(--gray);
-        }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-        
+
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
         }
-        
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            height: 250px;
-        }
-        
-        .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(37, 99, 235, 0.9);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            padding: 1rem;
-            text-align: center;
-        }
-        
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-overlay h3 {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .portfolio-overlay p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1rem;
-        }
-        
-        .portfolio-btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
+
+        /* Modifications pour les cartes Portfolio */
+.portfolio-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    height: auto; /* Changé de 400px à auto */
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    flex-shrink: 0; /* Empêche l'image de rétrécir */
+}
+
+.portfolio-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1; /* Permet à cette section de prendre l'espace disponible */
+}
+
+.portfolio-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-info p {
+    margin-bottom: 1rem;
+}
+
+.portfolio-btn {
+    display: inline-block;
+    margin-top: auto; /* Pousse le bouton vers le bas */
+    padding: 0.7rem 1.5rem;
+    background: var(--gradient-3);
+    color: var(--dark);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-align: center;
+    align-self: flex-start; /* Empêche le bouton de s'étirer */
+}
+
         .portfolio-btn:hover {
-            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
         }
-        
-        /* Testimonials Section */
-        #testimonials {
-            padding: 6rem 0;
-            background: white;
-        }
-        
-        .testimonials-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .testimonial-slide {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+
+        /* CTA Final */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
             text-align: center;
-            display: none;
         }
-        
-        .testimonial-slide.active {
-            display: block;
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .testimonial-quote {
-            font-size: 1.1rem;
-            color: var(--gray);
-            font-style: italic;
+
+        .final-cta h2 {
+            font-size: 3rem;
+            font-weight: 900;
             margin-bottom: 1.5rem;
-            line-height: 1.8;
         }
-        
-        .testimonial-author {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        .final-cta p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
         }
-        
-        .author-img {
-            width: 80px;
-            height: 80px;
+
+        /* Contact Flottant */
+        .floating-contact {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+
+        .whatsapp-btn {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
             border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid var(--primary);
-        }
-        
-        .author-name {
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: var(--dark);
-            margin-bottom: 0.3rem;
-        }
-        
-        .author-position {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        .testimonial-dots {
             display: flex;
+            align-items: center;
             justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            background: var(--gray-light);
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-        
-        /* Contact Section */
-        #contact {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        
-        .contact-flex {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-        
-        .contact-details {
-            margin-bottom: 2rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
+            font-size: 2rem;
             color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 1rem;
-        }
-        
-        .contact-text {
-            color: var(--gray);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--light);
-            border-radius: 50%;
-            color: var(--primary);
-            transition: all 0.3s ease;
             text-decoration: none;
-            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            animation: pulse-whatsapp 2s infinite;
         }
-        
-        .social-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
+
+        @keyframes pulse-whatsapp {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
-        
-        .contact-form {
-            flex: 1;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--gray-light);
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
+
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 2rem 0;
+            padding: 3rem 2rem;
+            background: #0a0e27;
             text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-            text-decoration: none;
-        }
-        
-        .footer-logo span {
-            color: var(--secondary);
-        }
-        
-        .footer-links {
-            display: flex;
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-links li {
-            margin: 0 1rem;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-text {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-        
+
         /* Responsive */
-        @media screen and (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
                 text-align: center;
             }
-            
-            .hero-text, .hero-image {
-                flex: none;
+
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-            
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-            
+
             .btn-group {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-            }
-            
-            .contact-flex {
-                flex-direction: column;
-            }
-        }
-        
-        @media screen and (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                right: 0;
-                width: 100%;
-                height: 0;
-                background: white;
                 flex-direction: column;
                 align-items: center;
-                overflow: hidden;
-                transition: height 0.3s ease;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
-            
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s;
+            }
+
             .nav-links.active {
-                height: auto;
-                padding: 2rem 0;
+                left: 0;
             }
-            
-            .nav-links li {
-                margin: 1rem 0;
-            }
-            
+
             .burger {
                 display: block;
             }
-            
-            .toggle .line1 {
+
+            .burger.active .line1 {
                 transform: rotate(-45deg) translate(-5px, 6px);
             }
-            
-            .toggle .line2 {
+
+            .burger.active .line2 {
                 opacity: 0;
             }
-            
-            .toggle .line3 {
+
+            .burger.active .line3 {
                 transform: rotate(45deg) translate(-5px, -6px);
             }
-            
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-            
+
             .section-title h2 {
                 font-size: 2rem;
             }
-            
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+            .main-offer-card {
+                padding: 2rem;
+            }
+
+            .price-tag {
+                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">SD<span>S</span></a>
-                <ul class="nav-links">
-                    <li><a href="#hero">Accueil</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#testimonials">Témoignages</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="burger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-            </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SDSpaces</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#offre">Offre</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="hero">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
-        <div class="container">
+    <section class="hero" id="hero">
+        <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Créez votre <span>Présence Web</span> Professionnelle</h1>
-                    <p>Développeur web spécialisé dans la création de sites vitrines pour professionnels et entreprises. Des solutions sur mesure qui convertissent les visiteurs en clients.</p>
-                    <div class="btn-group">
-                        <a href="#portfolio" class="btn">Voir mon travail</a>
-                        <a href="#contact" class="btn btn-outline">Me contacter</a>
-                    </div>
+                <div class="offer-badge">
+                    <i class="fas fa-gift"></i>
+                    1 MOIS GRATUIT - OFFRE LIMITÉE
                 </div>
-                <div class="hero-image">
-                    <img src="devpro.png" alt="Showcase" />
+                <h1>
+                    Votre Site Web<br>
+                    <span class="highlight">Professionnel Premium</span><br>
+                    Sans Risque
+                </h1>
+                <p>
+                    Design sur-mesure + Gestion personnalisée + Référencement Google Maps + Maintenance 24/7.
+                    <strong>Testez pendant 1 mois gratuitement. Pas satisfait ? Aucun paiement.</strong>
+                </p>
+                <div class="btn-group">
+                    <a href="#offre" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Démarrer Gratuitement
+                    </a>
+                    <a href="#portfolio" class="btn btn-outline">
+                        <i class="fas fa-eye"></i> Voir mes réalisations
+                    </a>
                 </div>
+            </div>
+            <div class="hero-image">
+                <img src="devpro.png" alt="Site web professionnel">
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Mes Services</h2>
-                <p>Des solutions web adaptées aux besoins spécifiques des professionnels de santé et des agences</p>
+    <!-- Offre Section -->
+    <section class="offer-section" id="offre">
+        <div class="offer-container">
+            <div class="section-title">
+                <h2>L'Offre Sans Risque</h2>
+                <p>Tout inclus, aucun frais caché, résiliable à tout moment</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Sites Vitrines</h3>
-                    <p>Création de sites web professionnels et attractifs qui présentent votre activité, services et expertise de manière optimale.</p>
+
+            <div class="main-offer-card">
+                <div class="price-tag">
+                    <small>800€</small> 0€
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Design Responsive</h3>
-                    <p>Sites web adaptés à tous les appareils (ordinateurs, tablettes, smartphones) pour une expérience utilisateur optimale.</p>
+                <div class="trial-text">
+                    <strong>Premier mois TOTALEMENT GRATUIT</strong><br>
+                    Puis seulement 49€ pendant 3 mois tout compris.
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>SEO</h3>
-                    <p>Optimisation de votre site pour les moteurs de recherche afin d'améliorer votre visibilité et attirer plus de clients.</p>
+                <div class="guarantee">
+                    <i class="fas fa-shield-alt"></i> Garantie Satisfait ou Remboursé
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
+                <p style="margin-top: 2rem; color: rgba(255,255,255,0.7); position: relative; z-index: 1;">
+                    Pas convaincu après 30 jours ? Aucun paiement. Sans engagement.
+                </p>
+            </div>
+
+            <div class="inclusions-grid">
+                <div class="inclusion-card">
+                    <div class="inclusion-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3>Webdesign</h3>
-                    <p>Interfaces modernes et élégantes, adaptées à votre identité visuelle et aux attentes de vos clients.</p>
+                    <h3>Design 100% Personnalisé</h3>
+                    <p>Site web unique créé spécialement pour VOTRE activité. Design moderne, professionnel et adapté à votre identité.</p>
+                    <span class="value-tag">Valeur: 500€</span>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Système de RDV</h3>
-                    <p>Intégration de systèmes de prise de rendez-vous en ligne pour les professionnels de santé et services.</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon">
+
+                <div class="inclusion-card">
+                    <div class="inclusion-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
-                    <h3>Maintenance</h3>
-                    <p>Services de maintenance et de mise à jour pour garder votre site performant, sécurisé et à jour.</p>
+                    <h3>Fonctionnalités Sur-Mesure</h3>
+                    <p>Réservation en ligne, formulaires, galerie photos, catalogue... Tout ce dont VOUS avez besoin.</p>
+                    <span class="value-tag">Valeur: 300€</span>
+                </div>
+
+                <div class="inclusion-card">
+                    <div class="inclusion-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>100% Responsive</h3>
+                    <p>Adapté à tous les écrans : smartphone, tablette, ordinateur. Design optimisé mobile-first.</p>
+                    <span class="value-tag">Valeur: 200€</span>
+                </div>
+
+                <div class="inclusion-card">
+                    <div class="inclusion-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Référencement Google Maps</h3>
+                    <p>Optimisation complète Google My Business. Apparaissez en premier dans les recherches locales.</p>
+                    <span class="value-tag">Valeur: 400€</span>
+                </div>
+
+                <div class="inclusion-card">
+                    <div class="inclusion-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Performance Ultra-Rapide</h3>
+                    <p>Site optimisé pour un chargement instantané. Meilleure expérience = plus de clients.</p>
+                    <span class="value-tag">Valeur: 150€</span>
+                </div>
+
+                <div class="inclusion-card">
+                    <div class="inclusion-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support & Maintenance 24/7</h3>
+                    <p>Assistance illimitée. Mises à jour, sécurité, sauvegardes automatiques. Tout est géré pour vous.</p>
+                    <span class="value-tag">Valeur: 100€/mois</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Mon Portfolio</h2>
-                <p>Découvrez mes réalisations récentes pour des professionnels de divers secteurs</p>
+    <section class="portfolio-section" id="portfolio">
+        <div class="offer-container">
+            <div class="section-title">
+                <h2>Mes Réalisations</h2>
+                <p>Sites web créés pour professionnels de tous secteurs</p>
             </div>
-            <div class="portfolio-filter" data-aos="fade-up">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="medical">Médical</button>
-                <button class="filter-btn" data-filter="agency">Agences</button>
-                <button class="filter-btn" data-filter="business">Entreprises</button>
-            </div>
+
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="medical" data-aos="fade-up" data-aos-delay="100">
-                    <img src="Dr Attak Nadia/image1.png" alt="Cabinet Médical" class="portfolio-img">
-                    <div class="portfolio-overlay">
+                <div class="portfolio-card">
+                    <img src="Dr Attak Nadia/image1.png" alt="Cabinet médical">
+                    <div class="portfolio-info">
                         <h3>Dr Attak Nadia</h3>
-                        <p>Site vitrine pour un cabinet de cardiologie avec système de prise de rendez-vous</p>
+                        <p>Site vitrine + réservation en ligne</p>
+                        <span class="portfolio-tag">Santé</span>
                         <a href="Dr Attak Nadia/index1.html" class="portfolio-btn">Voir détails</a>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="agency" data-aos="fade-up" data-aos-delay="200">
-                    <img src="point de vente/pexels-ahmetcotur-31817157.jpg" alt="Agence Immobilière" class="portfolio-img">
-                    <div class="portfolio-overlay">
+
+                <div class="portfolio-card">
+                    <img src="point de vente/pexels-ahmetcotur-31817157.jpg" alt="Point de vente">
+                    <div class="portfolio-info">
                         <h3>ImmoPlus</h3>
-                        <p>Site web complet pour une agence immobilière avec catalogue de biens</p>
+                        <p>Site web complet avec catalogue</p>
+                        <span class="portfolio-tag">Commerce</span>
                         <a href="point de vente/index.html" class="portfolio-btn">Voir détails</a>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="medical" data-aos="fade-up" data-aos-delay="300">
-                    <img src="Dr Élodie Lukaszewicz/image2.png" alt="Centre Dentaire" class="portfolio-img">
-                    <div class="portfolio-overlay">
+
+                <div class="portfolio-card">
+                    <img src="Dr Élodie Lukaszewicz/image2.png" alt="Centre dentaire">
+                    <div class="portfolio-info">
                         <h3>Centre Dentaire Sourire</h3>
-                        <p>Site vitrine avec présentation des services, de l'équipe et formulaire de contact</p>
+                        <p>Site vitrine avec présentation services</p>
+                        <span class="portfolio-tag">Santé</span>
                         <a href="Dr Élodie Lukaszewicz/index.html" class="portfolio-btn">Voir détails</a>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="business" data-aos="fade-up" data-aos-delay="400">
-                    <img src="restau.png" alt="Restaurant" class="portfolio-img">
-                    <div class="portfolio-overlay">
+
+                <div class="portfolio-card">
+                    <img src="restau.png" alt="Restaurant">
+                    <div class="portfolio-info">
                         <h3>Le Gourmet</h3>
-                        <p>Site web pour restaurant avec menu interactif et système de réservation</p>
-                        <a href="#" class="portfolio-btn">Voir détails</a>
+                        <p>Menu interactif + réservations</p>
+                        <span class="portfolio-tag">Restauration</span>
+                        <a href="https://lepuzzele.netlify.app/" class="portfolio-btn">Voir détails</a>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="agency" data-aos="fade-up" data-aos-delay="500">
-                    <img src="Agence immobilière Rabat/file.png" alt="Agence Marketing" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3>DigitalBoost</h3>
-                        <p>Site web moderne pour une agence de marketing digital</p>
+
+                <div class="portfolio-card">
+                    <img src="Agence immobilière Rabat/file.png" alt="Agence immobilière">
+                    <div class="portfolio-info">
+                        <h3>Agence Immobilière</h3>
+                        <p>Catalogue de biens + recherche</p>
+                        <span class="portfolio-tag">Immobilier</span>
                         <a href="Agence immobilière Rabat/index.html" class="portfolio-btn">Voir détails</a>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="business" data-aos="fade-up" data-aos-delay="600">
-                    <img src="saloon.png" alt="Salon de Beauté" class="portfolio-img">
-                    <div class="portfolio-overlay">
+
+                <div class="portfolio-card">
+                    <img src="saloon.png" alt="Salon de beauté">
+                    <div class="portfolio-info">
                         <h3>Belle & Zen</h3>
-                        <p>Site vitrine avec animations pour un salon de beauté et bien-être</p>
+                        <p>Site vitrine avec animations</p>
+                        <span class="portfolio-tag">Beauté</span>
                         <a href="#" class="portfolio-btn">Voir détails</a>
                     </div>
                 </div>
@@ -1064,100 +791,29 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Témoignages Clients</h2>
-                <p>Ce que disent mes clients à propos de mes services et réalisations</p>
+    <!-- CTA Final -->
+    <section class="final-cta" id="contact">
+        <div class="offer-container">
+            <h2>Prêt à Transformer Votre Présence en Ligne ?</h2>
+            <p>Rejoignez plus de 80 professionnels qui ont choisi la qualité et la simplicité</p>
+            <div style="margin-top: 3rem;">
+                <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l%27offre%201%20mois%20gratuit" class="btn btn-primary" style="font-size: 1.3rem; padding: 1.5rem 3rem;">
+                    <i class="fab fa-whatsapp"></i> Démarrer Mon Mois Gratuit
+                </a>
             </div>
-            <div class="testimonials-container" data-aos="fade-up">
-                <div class="testimonial-slide active">
-                    <p class="testimonial-quote">"Je suis extrêmement satisfait du site vitrine créé pour mon cabinet médical. Le design est élégant, professionnel et parfaitement adapté à mon activité. Mes patients peuvent facilement prendre rendez-vous en ligne et trouver toutes les informations dont ils ont besoin. Je recommande vivement!"</p>
-                    <div class="testimonial-author">
-                        <img src="/api/placeholder/80/80" alt="Dr. Thomas" class="author-img">
-                        <h4 class="author-name">Dr. Thomas</h4>
-                        <p class="author-position">Médecin généraliste</p>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-quote">"Notre agence immobilière a vu ses demandes de contact augmenter de 40% depuis la mise en ligne de notre nouveau site web. L'interface est intuitive, élégante et parfaitement responsive. Un grand merci pour ce travail de qualité et ce professionnalisme!"</p>
-                    <div class="testimonial-author">
-                        <img src="/api/placeholder/80/80" alt="Sophie Durand" class="author-img">
-                        <h4 class="author-name">Sophie Durand</h4>
-                        <p class="author-position">Directrice d'agence immobilière</p>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-quote">"La refonte de notre site web a transformé notre image de marque. Le design est moderne, les animations sont subtiles et professionnelles, et le site se charge rapidement. Notre taux de conversion a augmenté significativement. Une collaboration très réussie!"</p>
-                    <div class="testimonial-author">
-                        <img src="/api/placeholder/80/80" alt="Marc Leroy" class="author-img">
-                        <h4 class="author-name">Marc Leroy</h4>
-                        <p class="author-position">Dirigeant d'entreprise</p>
-                    </div>
-                </div>
-                <div class="testimonial-dots">
-                    <span class="dot active" data-slide="0"></span>
-                    <span class="dot" data-slide="1"></span>
-                    <span class="dot" data-slide="2"></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Me Contacter</h2>
-                <p>Une question, un projet ? N'hésitez pas à me contacter pour discuter de vos besoins</p>
-            </div>
-            <div class="contact-flex">
-                <div class="contact-info" data-aos="fade-right">
-                    <h3>Parlons de votre projet</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">+212608093489</div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">iliyass.meliani@gmail.com</div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">Maroc, Rabat</div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form" data-aos="fade-left">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Votre email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sujet">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Votre message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Envoyer le message</button>
-                    </form>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
+                Sans carte bancaire • Sans engagement • 100% Sans risque
+            </p>
+            
+            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">📞 <strong>Contact Direct</strong></p>
+                <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+                    <a href="tel:+212608093489" style="color: rgba(255,255,255,0.8); text-decoration: none;">
+                        <i class="fas fa-phone"></i> +212 608 093 489
+                    </a>
+                    <a href="mailto:iliyass.meliani@gmail.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">
+                        <i class="fas fa-envelope"></i> iliyass.meliani@gmail.com
+                    </a>
                 </div>
             </div>
         </div>
@@ -1165,112 +821,115 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="footer-logo">Dev<span>Pro</span></a>
-                <ul class="footer-links">
-                    <li><a href="#hero">Accueil</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#testimonials">Témoignages</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <p class="footer-text">&copy; 2025 meliani-dev. Tous droits réservés.</p>
+        <div class="offer-container">
+            <div style="margin-bottom: 2rem;">
+                <div class="logo" style="font-size: 2.5rem; margin-bottom: 1rem;">MelianiDev</div>
+                <p style="color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto;">
+                    Création de sites web professionnels pour tous types d'activités.<br>
+                    Design moderne, performance optimale, support 24/7.
+                </p>
+            </div>
+
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); font-size: 0.9rem;">
+                <p>&copy; 2025 MelianiDev. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- WhatsApp Flottant -->
+    <div class="floating-contact">
+        <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20offre" class="whatsapp-btn" title="Contactez-moi sur WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
     <script>
-        // Initialize AOS animation library
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-        
         // Mobile navigation toggle
         const burger = document.querySelector('.burger');
         const nav = document.querySelector('.nav-links');
         
         burger.addEventListener('click', () => {
             nav.classList.toggle('active');
-            burger.classList.toggle('toggle');
+            burger.classList.toggle('active');
         });
         
         // Close mobile menu when clicking on a nav link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
-                burger.classList.remove('toggle');
+                burger.classList.remove('active');
             });
         });
-        
-        // Sticky header on scroll
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
-        
-        // Portfolio filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.inclusion-card, .portfolio-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Compteur animé pour le prix
+        const priceTag = document.querySelector('.price-tag');
+        if (priceTag) {
+            let count = 800;
+            const target = 0;
+            const duration = 2000;
+            const increment = (count - target) / (duration / 16);
+
+            function updatePrice() {
+                count -= increment;
+                if (count > target) {
+                    priceTag.innerHTML = `<small>${Math.round(count)}€</small> 0€`;
+                    requestAnimationFrame(updatePrice);
+                } else {
+                    priceTag.innerHTML = `<small>800€</small> 0€`;
+                }
+            }
+
+            // Démarrer l'animation quand la section est visible
+            const priceObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updatePrice();
+                        priceObserver.unobserve(entry.target);
                     }
                 });
             });
-        });
-        
-        // Testimonial slider
-        const dots = document.querySelectorAll('.dot');
-        const slides = document.querySelectorAll('.testimonial-slide');
-        
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const slideIndex = dot.getAttribute('data-slide');
-                
-                // Remove active class from all dots and slides
-                dots.forEach(d => d.classList.remove('active'));
-                slides.forEach(s => s.classList.remove('active'));
-                
-                // Add active class to current dot and slide
-                dot.classList.add('active');
-                slides[slideIndex].classList.add('active');
-            });
-        });
-        
-        // Auto-rotate testimonials
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-        
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            
-            // Remove active class from all dots and slides
-            dots.forEach(d => d.classList.remove('active'));
-            slides.forEach(s => s.classList.remove('active'));
-            
-            // Add active class to current dot and slide
-            dots[currentSlide].classList.add('active');
-            slides[currentSlide].classList.add('active');
-        }, 5000);
+
+            const offerCard = document.querySelector('.main-offer-card');
+            if (offerCard) {
+                priceObserver.observe(offerCard);
+            }
+        }
     </script>
 </body>
 </html>
