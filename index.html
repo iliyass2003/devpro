@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sites Web Premium | 1 Mois Gratuit</title>
+    <title>Services Web Premium | SDSpaces</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -32,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* Navigation Ultra-Moderne */
         nav {
             position: fixed;
             top: 0;
@@ -105,7 +104,6 @@
             transition: all 0.3s;
         }
 
-        /* Hero Section Ultra-Premium */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -167,7 +165,6 @@
             line-height: 1.8;
         }
 
-        /* Badge OFFRE */
         .offer-badge {
             display: inline-flex;
             align-items: center;
@@ -186,7 +183,6 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* Boutons Premium */
         .btn-group {
             display: flex;
             gap: 1.5rem;
@@ -227,7 +223,6 @@
             border-color: var(--light);
         }
 
-        /* Hero Image avec effet 3D */
         .hero-image {
             position: relative;
             animation: float 6s ease-in-out infinite;
@@ -244,14 +239,13 @@
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
         }
 
-        /* Section Offre PREMIUM */
-        .offer-section {
+        .services-section {
             padding: 6rem 2rem;
             background: linear-gradient(180deg, var(--dark) 0%, #1a1f3a 100%);
             position: relative;
         }
 
-        .offer-container {
+        .services-container {
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -275,200 +269,179 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Carte Offre Principale */
-        .main-offer-card {
+        .service-card {
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             border: 2px solid rgba(102, 126, 234, 0.3);
             border-radius: 30px;
-            padding: 4rem;
-            text-align: center;
+            padding: 3rem;
+            margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
-            margin-bottom: 4rem;
+            transition: all 0.4s;
         }
 
-        .main-offer-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.6);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .service-title {
+            flex: 1;
+        }
+
+        .service-title h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .service-title .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .service-price {
+            text-align: right;
         }
 
         .price-tag {
-            font-size: 5rem;
+            font-size: 3.5rem;
             font-weight: 900;
             background: var(--gradient-3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 1rem 0;
-            position: relative;
-            z-index: 1;
         }
 
-        .price-tag small {
-            font-size: 2rem;
-            text-decoration: line-through;
-            opacity: 0.5;
+        .price-period {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .trial-text {
-            font-size: 1.5rem;
-            color: var(--light);
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .guarantee {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: rgba(16, 185, 129, 0.2);
-            border: 2px solid #10b981;
-            border-radius: 50px;
-            color: #10b981;
-            font-weight: 700;
-            margin-top: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Grille des Inclusions */
-        .inclusions-grid {
+        .service-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .inclusion-card {
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--light);
+        }
+
+        .feature-text span {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .ideal-for {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+        }
+
+        .ideal-for strong {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .process-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #1a1f3a 0%, var(--dark) 100%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .step-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
+            text-align: center;
+            position: relative;
             transition: all 0.4s;
         }
 
-        .inclusion-card:hover {
+        .step-card:hover {
             transform: translateY(-10px);
             border-color: rgba(102, 126, 234, 0.5);
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
         }
 
-        .inclusion-icon {
-            width: 70px;
-            height: 70px;
+        .step-number {
+            width: 60px;
+            height: 60px;
             background: var(--gradient-3);
-            border-radius: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin: 0 auto 1.5rem;
         }
 
-        .inclusion-card h3 {
+        .step-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--light);
         }
 
-        .inclusion-card p {
+        .step-card p {
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
         }
 
-        .value-tag {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 51, 102, 0.2);
-            border: 1px solid var(--accent);
-            border-radius: 50px;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #1a1f3a 0%, var(--dark) 100%);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        /* Modifications pour les cartes Portfolio */
-.portfolio-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.4s;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    height: auto; /* Changé de 400px à auto */
-    display: flex;
-    flex-direction: column;
-}
-
-.portfolio-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    flex-shrink: 0; /* Empêche l'image de rétrécir */
-}
-
-.portfolio-info {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex-grow: 1; /* Permet à cette section de prendre l'espace disponible */
-}
-
-.portfolio-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-info p {
-    margin-bottom: 1rem;
-}
-
-.portfolio-btn {
-    display: inline-block;
-    margin-top: auto; /* Pousse le bouton vers le bas */
-    padding: 0.7rem 1.5rem;
-    background: var(--gradient-3);
-    color: var(--dark);
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 700;
-    transition: all 0.3s;
-    text-align: center;
-    align-self: flex-start; /* Empêche le bouton de s'étirer */
-}
-
-        .portfolio-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
-        }
-
-        /* CTA Final */
         .final-cta {
             padding: 6rem 2rem;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
@@ -487,7 +460,6 @@
             margin-bottom: 3rem;
         }
 
-        /* Contact Flottant */
         .floating-contact {
             position: fixed;
             bottom: 2rem;
@@ -515,7 +487,6 @@
             50% { transform: scale(1.1); }
         }
 
-        /* Footer */
         footer {
             padding: 3rem 2rem;
             background: #0a0e27;
@@ -523,7 +494,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Responsive */
         @media (max-width: 968px) {
             .hero-container {
                 grid-template-columns: 1fr;
@@ -576,25 +546,32 @@
                 font-size: 2rem;
             }
 
-            .main-offer-card {
+            .service-card {
                 padding: 2rem;
             }
 
             .price-tag {
-                font-size: 3rem;
+                font-size: 2.5rem;
+            }
+
+            .service-header {
+                flex-direction: column;
+            }
+
+            .service-price {
+                text-align: left;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">SDSpaces</div>
             <ul class="nav-links">
                 <li><a href="#hero">Accueil</a></li>
-                <li><a href="#offre">Offre</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Processus</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="burger">
@@ -605,213 +582,305 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <div class="offer-badge">
-                    <i class="fas fa-gift"></i>
-                    1 MOIS GRATUIT - OFFRE LIMITÉE
+                    <i class="fas fa-star"></i>
+                    SOLUTIONS WEB SUR MESURE
                 </div>
                 <h1>
-                    Votre Site Web<br>
-                    <span class="highlight">Professionnel Premium</span><br>
-                    Sans Risque
+                    Créez Votre<br>
+                    <span class="highlight">Présence Digitale</span><br>
+                    Professionnelle
                 </h1>
                 <p>
-                    Design sur-mesure + Gestion personnalisée + Référencement Google Maps + Maintenance 24/7.
-                    <strong>Testez pendant 1 mois gratuitement. Pas satisfait ? Aucun paiement.</strong>
+                    Sites vitrines élégants, boutiques e-commerce performantes, systèmes de gestion personnalisés.
+                    <strong>Des solutions adaptées à votre activité et votre budget.</strong>
                 </p>
                 <div class="btn-group">
-                    <a href="#offre" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i> Démarrer Gratuitement
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Découvrir nos Services
                     </a>
-                    <a href="#portfolio" class="btn btn-outline">
-                        <i class="fas fa-eye"></i> Voir mes réalisations
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-comments"></i> Discutons de votre projet
                     </a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="devpro.png" alt="Site web professionnel">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Services Web Professionnels">
             </div>
         </div>
     </section>
 
-    <!-- Offre Section -->
-    <section class="offer-section" id="offre">
-        <div class="offer-container">
+    <section class="services-section" id="services">
+        <div class="services-container">
             <div class="section-title">
-                <h2>L'Offre Sans Risque</h2>
-                <p>Tout inclus, aucun frais caché, résiliable à tout moment</p>
+                <h2>Nos Services</h2>
+                <p>Des solutions complètes pour tous vos besoins digitaux</p>
             </div>
 
-            <div class="main-offer-card">
-                <div class="price-tag">
-                    <small>800€</small> 0€
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">
+                        <h3>🌐 Site Vitrine</h3>
+                        <p class="subtitle">Élégant et professionnel</p>
+                    </div>
+                    <div class="service-price">
+                        <div class="price-tag">50€</div>
+                    </div>
                 </div>
-                <div class="trial-text">
-                    <strong>Premier mois TOTALEMENT GRATUIT</strong><br>
-                    Puis seulement 49€ pendant 3 mois tout compris.
+                
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem;">
+                    Un site simple et élégant pour présenter votre activité de manière professionnelle.
+                </p>
+
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="feature-text">
+                            <strong>Pages complètes</strong>
+                            <span>Accueil, À propos, Services/Produits, Contact</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="feature-text">
+                            <strong>Design responsive</strong>
+                            <span>Parfaitement adapté ordinateur & mobile</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-search"></i></div>
+                        <div class="feature-text">
+                            <strong>Référencement SEO</strong>
+                            <span>Optimisation pour Google</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                        <div class="feature-text">
+                            <strong>Personnalisation</strong>
+                            <span>Logo, textes et images intégrés</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="guarantee">
-                    <i class="fas fa-shield-alt"></i> Garantie Satisfait ou Remboursé
+
+                <div class="ideal-for">
+                    <strong>💡 Idéal pour :</strong> Artisans, indépendants, petites entreprises, portfolio personnel
                 </div>
-                <p style="margin-top: 2rem; color: rgba(255,255,255,0.7); position: relative; z-index: 1;">
-                    Pas convaincu après 30 jours ? Aucun paiement. Sans engagement.
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">
+                        <h3>🛒 Site E-commerce (COD)</h3>
+                        <p class="subtitle">Boutique complète avec paiement à la livraison</p>
+                    </div>
+                    <div class="service-price">
+                        <div class="price-tag">350€</div>
+                    </div>
+                </div>
+                
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem;">
+                    Boutique en ligne avec gestion administrative complète et paiement Cash On Delivery.
+                </p>
+
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <div class="feature-text">
+                            <strong>Pages e-commerce</strong>
+                            <span>Accueil, Produits, À propos, Contact</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
+                        <div class="feature-text">
+                            <strong>Gestion clients</strong>
+                            <span>Tableau de bord administrateur complet</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-boxes"></i></div>
+                        <div class="feature-text">
+                            <strong>Gestion produits</strong>
+                            <span>Ajout, modification, stock</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <div class="feature-text">
+                            <strong>Gestion commandes</strong>
+                            <span>Suivi et traitement des commandes</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="feature-text">
+                            <strong>Paiement COD</strong>
+                            <span>Cash On Delivery avec confirmation</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="feature-text">
+                            <strong>Performance</strong>
+                            <span>Interface claire et rapide + SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ideal-for">
+                    <strong>💡 Idéal pour :</strong> Boutiques locales, ventes par livraison, commerce en ligne
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">
+                        <h3>🔧 Maintenance & Hébergement</h3>
+                        <p class="subtitle">Tranquillité d'esprit totale</p>
+                    </div>
+                    <div class="service-price">
+                        <div class="price-tag">100€</div>
+                        <div class="price-period">/an</div>
+                    </div>
+                </div>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-server"></i></div>
+                        <div class="feature-text">
+                            <strong>Hébergement sécurisé</strong>
+                            <span>Inclus dans le forfait annuel</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-save"></i></div>
+                        <div class="feature-text">
+                            <strong>Sauvegardes régulières</strong>
+                            <span>Protection de vos données</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div class="feature-text">
+                            <strong>Mises à jour</strong>
+                            <span>Site toujours à jour et sécurisé</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-life-ring"></i></div>
+                        <div class="feature-text">
+                            <strong>Support technique</strong>
+                            <span>Assistance en cas de bug ou ajout mineur</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title">
+                        <h3>⚙️ Fonctionnalités Supplémentaires</h3>
+                        <p class="subtitle">Personnalisez votre site</p>
+                    </div>
+                    <div class="service-price">
+                        <div class="price-tag" style="font-size: 2.5rem;">À partir de 30€</div>
+                    </div>
+                </div>
+                
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 1rem;">
+                    Ajout ou développement d'une nouvelle fonction selon vos besoins spécifiques.
+                </p>
+                <p style="color: rgba(255,255,255,0.6); font-size: 1rem;">
+                    Gestion personnalisée, modules sur mesure, automatisations, nouvelles structures... Prix selon la complexité.
                 </p>
             </div>
 
-            <div class="inclusions-grid">
-                <div class="inclusion-card">
-                    <div class="inclusion-icon">
-                        <i class="fas fa-paint-brush"></i>
+            <div class="service-card" style="border-color: rgba(0, 212, 255, 0.5); background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 102, 255, 0.15) 100%);">
+                <div class="service-header">
+                    <div class="service-title">
+                        <h3>🎯 Site de Gestion Sur Mesure</h3>
+                        <p class="subtitle">Solution personnalisée pour votre entreprise</p>
                     </div>
-                    <h3>Design 100% Personnalisé</h3>
-                    <p>Site web unique créé spécialement pour VOTRE activité. Design moderne, professionnel et adapté à votre identité.</p>
-                    <span class="value-tag">Valeur: 500€</span>
-                </div>
-
-                <div class="inclusion-card">
-                    <div class="inclusion-icon">
-                        <i class="fas fa-cogs"></i>
+                    <div class="service-price">
+                        <div class="price-tag" style="font-size: 2.5rem;">À partir de 300€</div>
                     </div>
-                    <h3>Fonctionnalités Sur-Mesure</h3>
-                    <p>Réservation en ligne, formulaires, galerie photos, catalogue... Tout ce dont VOUS avez besoin.</p>
-                    <span class="value-tag">Valeur: 300€</span>
                 </div>
-
-                <div class="inclusion-card">
-                    <div class="inclusion-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>100% Responsive</h3>
-                    <p>Adapté à tous les écrans : smartphone, tablette, ordinateur. Design optimisé mobile-first.</p>
-                    <span class="value-tag">Valeur: 200€</span>
-                </div>
-
-                <div class="inclusion-card">
-                    <div class="inclusion-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3>Référencement Google Maps</h3>
-                    <p>Optimisation complète Google My Business. Apparaissez en premier dans les recherches locales.</p>
-                    <span class="value-tag">Valeur: 400€</span>
-                </div>
-
-                <div class="inclusion-card">
-                    <div class="inclusion-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Performance Ultra-Rapide</h3>
-                    <p>Site optimisé pour un chargement instantané. Meilleure expérience = plus de clients.</p>
-                    <span class="value-tag">Valeur: 150€</span>
-                </div>
-
-                <div class="inclusion-card">
-                    <div class="inclusion-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Support & Maintenance 24/7</h3>
-                    <p>Assistance illimitée. Mises à jour, sécurité, sauvegardes automatiques. Tout est géré pour vous.</p>
-                    <span class="value-tag">Valeur: 100€/mois</span>
-                </div>
+                
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 1rem;">
+                    Création d'un système de gestion adapté exactement à vos besoins et processus métier.
+                </p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1rem;">
+                    Analyse approfondie, développement personnalisé, formation complète incluse.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio-section" id="portfolio">
-        <div class="offer-container">
+    <section class="process-section" id="process">
+        <div class="services-container">
             <div class="section-title">
-                <h2>Mes Réalisations</h2>
-                <p>Sites web créés pour professionnels de tous secteurs</p>
+                <h2>Processus de Travail</h2>
+                <p>Simple, transparent et collaboratif</p>
             </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <img src="Dr Attak Nadia/image1.png" alt="Cabinet médical">
-                    <div class="portfolio-info">
-                        <h3>Dr Attak Nadia</h3>
-                        <p>Site vitrine + réservation en ligne</p>
-                        <span class="portfolio-tag">Santé</span>
-                        <a href="Dr Attak Nadia/index1.html" class="portfolio-btn">Voir détails</a>
-                    </div>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Premier Contact</h3>
+                    <p>Contactez-moi via le chat du site, par email ou directement par téléphone pour discuter de votre projet.</p>
                 </div>
 
-                <div class="portfolio-card">
-                    <img src="point de vente/pexels-ahmetcotur-31817157.jpg" alt="Point de vente">
-                    <div class="portfolio-info">
-                        <h3>ImmoPlus</h3>
-                        <p>Site web complet avec catalogue</p>
-                        <span class="portfolio-tag">Commerce</span>
-                        <a href="point de vente/index.html" class="portfolio-btn">Voir détails</a>
-                    </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Appel Découverte</h3>
+                    <p>Nous organisons un appel pour définir vos besoins précis, vos objectifs et vos attentes.</p>
                 </div>
 
-                <div class="portfolio-card">
-                    <img src="Dr Élodie Lukaszewicz/image2.png" alt="Centre dentaire">
-                    <div class="portfolio-info">
-                        <h3>Centre Dentaire Sourire</h3>
-                        <p>Site vitrine avec présentation services</p>
-                        <span class="portfolio-tag">Santé</span>
-                        <a href="Dr Élodie Lukaszewicz/index.html" class="portfolio-btn">Voir détails</a>
-                    </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Création</h3>
+                    <p>Je développe votre site selon vos spécifications, avec des points d'étape réguliers pour validation.</p>
                 </div>
 
-                <div class="portfolio-card">
-                    <img src="restau.png" alt="Restaurant">
-                    <div class="portfolio-info">
-                        <h3>Le puzzel</h3>
-                        <p>Menu interactif + réservations</p>
-                        <span class="portfolio-tag">Restauration</span>
-                        <a href="https://lepuzzele.netlify.app/" class="portfolio-btn">Voir détails</a>
-                    </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Déploiement</h3>
+                    <p>Mise en ligne de votre site sur un hébergement sécurisé et performant.</p>
                 </div>
 
-                <div class="portfolio-card">
-                    <img src="Agence immobilière Rabat/file.png" alt="Agence immobilière">
-                    <div class="portfolio-info">
-                        <h3>Agence Immobilière</h3>
-                        <p>Catalogue de biens + recherche</p>
-                        <span class="portfolio-tag">Immobilier</span>
-                        <a href="Agence immobilière Rabat/index.html" class="portfolio-btn">Voir détails</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <img src="saloon.png" alt="Salon de beauté">
-                    <div class="portfolio-info">
-                        <h3>Belle & Zen</h3>
-                        <p>Site vitrine avec animations</p>
-                        <span class="portfolio-tag">Beauté</span>
-                        <a href="#" class="portfolio-btn">Voir détails</a>
-                    </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Formation</h3>
+                    <p>Session de formation complète pour vous permettre d'utiliser et gérer votre site en toute autonomie.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
     <section class="final-cta" id="contact">
-        <div class="offer-container">
-            <h2>Prêt à Transformer Votre Présence en Ligne ?</h2>
-            <p>Rejoignez plus de 80 professionnels qui ont choisi la qualité et la simplicité</p>
+        <div class="services-container">
+            <h2>Prêt à Lancer Votre Projet ?</h2>
+            <p>Parlons de vos besoins et trouvons la solution parfaite pour votre activité</p>
             <div style="margin-top: 3rem;">
-                <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l%27offre%201%20mois%20gratuit" class="btn btn-primary" style="font-size: 1.3rem; padding: 1.5rem 3rem;">
-                    <i class="fab fa-whatsapp"></i> Démarrer Mon Mois Gratuit
+                <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20web" class="btn btn-primary" style="font-size: 1.3rem; padding: 1.5rem 3rem;">
+                    <i class="fab fa-whatsapp"></i> Discutons de Votre Projet
                 </a>
             </div>
             <p style="margin-top: 2rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
-                Sans carte bancaire • Sans engagement • 100% Sans risque
+                Réponse rapide • Devis gratuit • Sans engagement
             </p>
             
             <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1);">
                 <p style="font-size: 1.1rem; margin-bottom: 2rem;">📞 <strong>Contact Direct</strong></p>
                 <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
-                    <a href="tel:+212608093489" style="color: rgba(255,255,255,0.8); text-decoration: none;">
+                    <a href="tel:+212608093489" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s;">
                         <i class="fas fa-phone"></i> +212 608 093 489
                     </a>
-                    <a href="mailto:iliyass.meliani@gmail.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">
+                    <a href="mailto:iliyass.meliani@gmail.com" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s;">
                         <i class="fas fa-envelope"></i> iliyass.meliani@gmail.com
                     </a>
                 </div>
@@ -819,32 +888,29 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="offer-container">
+        <div class="services-container">
             <div style="margin-bottom: 2rem;">
                 <div class="logo" style="font-size: 2.5rem; margin-bottom: 1rem;">SDSpaces</div>
                 <p style="color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto;">
-                    Création de sites web professionnels pour tous types d'activités.<br>
-                    Design moderne, performance optimale, support 24/7.
+                    Création de sites web professionnels adaptés à tous types d'activités.<br>
+                    Design moderne, solutions sur mesure, support complet.
                 </p>
             </div>
 
             <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); font-size: 0.9rem;">
-                <p>&copy; 2022 SDSpaces. Tous droits réservés.</p>
+                <p>&copy; 2025 SDSpaces. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Flottant -->
     <div class="floating-contact">
-        <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20offre" class="whatsapp-btn" title="Contactez-moi sur WhatsApp">
+        <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20web" class="whatsapp-btn" title="Contactez-moi sur WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
 
     <script>
-        // Mobile navigation toggle
         const burger = document.querySelector('.burger');
         const nav = document.querySelector('.nav-links');
         
@@ -853,7 +919,6 @@
             burger.classList.toggle('active');
         });
         
-        // Close mobile menu when clicking on a nav link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
@@ -861,7 +926,6 @@
             });
         });
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -875,7 +939,6 @@
             });
         });
 
-        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -890,46 +953,21 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.inclusion-card, .portfolio-card').forEach(el => {
+        document.querySelectorAll('.service-card, .step-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
 
-        // Compteur animé pour le prix
-        const priceTag = document.querySelector('.price-tag');
-        if (priceTag) {
-            let count = 800;
-            const target = 0;
-            const duration = 2000;
-            const increment = (count - target) / (duration / 16);
-
-            function updatePrice() {
-                count -= increment;
-                if (count > target) {
-                    priceTag.innerHTML = `<small>${Math.round(count)}€</small> 0€`;
-                    requestAnimationFrame(updatePrice);
-                } else {
-                    priceTag.innerHTML = `<small>800€</small> 0€`;
-                }
-            }
-
-            // Démarrer l'animation quand la section est visible
-            const priceObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        updatePrice();
-                        priceObserver.unobserve(entry.target);
-                    }
-                });
+        document.querySelectorAll('.final-cta a, footer a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = 'var(--secondary)';
             });
-
-            const offerCard = document.querySelector('.main-offer-card');
-            if (offerCard) {
-                priceObserver.observe(offerCard);
-            }
-        }
+            link.addEventListener('mouseleave', function() {
+                this.style.color = 'rgba(255,255,255,0.8)';
+            });
+        });
     </script>
 </body>
 </html>
