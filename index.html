@@ -9,18 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --black:#080b12;
-    --panel:#0e131e;
-    --panel-2:#121826;
-    --line: rgba(255,255,255,0.07);
-    --white:#eef1f7;
-    --text-gray:#8a93a8;
-    --text-dim:#5b6478;
-    --blue:#3b6bff;
-    --blue-soft: rgba(59,107,255,0.12);
-    --blue-line: rgba(59,107,255,0.35);
-    --green:#31d17a;
-    --amber:#e0a638;
+    --black:#ffffff;
+    --panel:#f4f5f8;
+    --panel-2:#ebedf2;
+    --line: rgba(10,14,23,0.1);
+    --white:#0a0e17;
+    --text-gray:#555f76;
+    --text-dim:#838da3;
+    --blue:#2f56e0;
+    --blue-soft: rgba(47,86,224,0.08);
+    --blue-line: rgba(47,86,224,0.35);
+    --green:#188a55;
+    --amber:#a3720c;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -40,24 +40,23 @@
   nav{
     position:fixed;top:0;width:100%;z-index:1000;
     padding:1.4rem 0;
-    background:rgba(8,11,18,0.75);
-    backdrop-filter:blur(16px);
+    background:var(--black);
     border-bottom:1px solid var(--line);
-    transition:padding .3s ease, background .3s ease;
+    transition:padding .2s ease;
   }
-  nav.scrolled{padding:0.9rem 0;background:rgba(8,11,18,0.95);}
+  nav.scrolled{padding:0.9rem 0;}
   .nav-container{max-width:1360px;margin:0 auto;padding:0 3rem;display:flex;justify-content:space-between;align-items:center;}
   .logo{display:flex;align-items:center;gap:0.6rem;font-weight:700;font-size:1.25rem;letter-spacing:0.5px;}
-  .logo .dot{width:9px;height:9px;background:var(--blue);border-radius:1px;transform:rotate(45deg);box-shadow:0 0 12px var(--blue);}
+  .logo .dot{width:9px;height:9px;background:var(--blue);}
   .nav-links{display:flex;gap:2.6rem;list-style:none;align-items:center;}
-  .nav-links a{color:var(--text-gray);text-decoration:none;font-size:0.9rem;letter-spacing:0.3px;transition:color .25s;}
+  .nav-links a{color:var(--text-gray);text-decoration:none;font-size:0.9rem;letter-spacing:0.3px;transition:color .2s;}
   .nav-links a:hover{color:var(--white);}
   .nav-cta{
     padding:0.7rem 1.4rem;background:var(--blue);color:#fff !important;
-    border-radius:3px;font-size:0.85rem;font-weight:500;text-decoration:none;
-    display:flex;align-items:center;gap:0.5rem;transition:all .25s;
+    font-size:0.85rem;font-weight:500;text-decoration:none;
+    display:flex;align-items:center;gap:0.5rem;transition:background .2s;
   }
-  .nav-cta:hover{background:#5580ff;transform:translateY(-1px);}
+  .nav-cta:hover{background:#1e3fb8;}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
   .burger span{width:22px;height:2px;background:var(--white);}
 
@@ -65,53 +64,39 @@
   .hero{
     min-height:100vh;display:flex;align-items:center;
     padding:9rem 3rem 5rem;position:relative;
-    background:
-      radial-gradient(circle at 85% 15%, rgba(59,107,255,0.14) 0%, transparent 45%),
-      var(--black);
-  }
-  .hero-bg-grid{
-    position:absolute;inset:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size:56px 56px;
-    mask-image:radial-gradient(ellipse 70% 60% at 60% 30%, black, transparent);
-    pointer-events:none;
+    background:var(--black);
+    border-bottom:1px solid var(--line);
   }
   .hero-container{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:4rem;align-items:center;position:relative;z-index:1;}
   .eyebrow{
-    display:inline-flex;align-items:center;gap:0.6rem;
-    padding:0.5rem 1rem;border:1px solid var(--blue-line);background:var(--blue-soft);
-    border-radius:50px;font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;
-    font-family:'JetBrains Mono',monospace;color:#a9bdff;margin-bottom:2rem;
+    display:flex;align-items:center;gap:0.6rem;
+    font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;
+    font-family:'JetBrains Mono',monospace;color:var(--blue);margin-bottom:1.6rem;
   }
-  .eyebrow .pulse{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.8s infinite;}
-  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
   .hero-content h1{font-size:3.4rem;font-weight:600;line-height:1.12;letter-spacing:-1.5px;margin-bottom:1.6rem;}
   .hero-content h1 .hl{color:var(--blue);}
   .hero-content p{font-size:1.08rem;color:var(--text-gray);max-width:520px;margin-bottom:2.6rem;}
   .btn-group{display:flex;gap:1rem;margin-bottom:3.5rem;flex-wrap:wrap;}
-  .btn{padding:1rem 1.9rem;border-radius:3px;font-weight:500;font-size:0.92rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer;letter-spacing:0.2px;display:inline-flex;align-items:center;gap:0.6rem;}
+  .btn{padding:1rem 1.9rem;font-weight:500;font-size:0.92rem;text-decoration:none;transition:background .2s;border:none;cursor:pointer;letter-spacing:0.2px;display:inline-flex;align-items:center;gap:0.6rem;}
   .btn-primary{background:var(--blue);color:#fff;}
-  .btn-primary:hover{background:#5580ff;transform:translateY(-2px);}
+  .btn-primary:hover{background:#1e3fb8;}
   .btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
-  .btn-outline:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.03);}
+  .btn-outline:hover{border-color:rgba(10,14,23,0.3);}
   .hero-meta{display:flex;gap:2.6rem;padding-top:2.2rem;border-top:1px solid var(--line);flex-wrap:wrap;}
   .meta-item .mono{font-size:0.78rem;color:var(--blue);letter-spacing:0.5px;display:block;margin-bottom:0.3rem;}
   .meta-item span.label{font-size:0.85rem;color:var(--text-dim);}
 
   /* HERO VISUAL — route optimization signature */
   .route-panel{
-    background:var(--panel);border:1px solid var(--line);border-radius:6px;
-    padding:1.6rem;position:relative;overflow:hidden;
+    background:var(--panel);border:1px solid var(--line);
+    padding:1.6rem;position:relative;
   }
   .route-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;}
   .route-panel-head .title{font-size:0.78rem;font-family:'JetBrains Mono',monospace;color:var(--text-dim);letter-spacing:0.5px;}
-  .route-panel-head .status{font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--green);display:flex;align-items:center;gap:0.4rem;}
-  .route-panel-head .status .pulse{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite;}
-  .route-svg-wrap{background:var(--black);border:1px solid var(--line);border-radius:4px;padding:1rem;}
+  .route-panel-head .status{font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--green);}
+  .route-svg-wrap{background:var(--black);border:1px solid var(--line);padding:1rem;}
   .route-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-top:1.2rem;}
-  .rstat{background:var(--panel-2);border:1px solid var(--line);border-radius:4px;padding:0.9rem 0.8rem;}
+  .rstat{background:var(--panel-2);border:1px solid var(--line);padding:0.9rem 0.8rem;}
   .rstat .val{font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:var(--white);font-weight:500;}
   .rstat .val.down{color:var(--green);}
   .rstat .lab{font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;margin-top:0.3rem;}
@@ -126,35 +111,32 @@
 
   /* SOLUTIONS */
   .solutions{background:var(--black);border-top:1px solid var(--line);}
-  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
   .sol-card{
-    background:var(--panel);border:1px solid var(--line);border-radius:6px;
-    padding:2.4rem;display:flex;flex-direction:column;transition:all .3s ease;position:relative;
+    background:var(--panel);
+    padding:2.4rem;display:flex;flex-direction:column;position:relative;
   }
-  .sol-card.live{border-color:var(--blue-line);background:linear-gradient(180deg, rgba(59,107,255,0.06), var(--panel) 40%);}
-  .sol-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.18);}
-  .sol-card.live:hover{border-color:var(--blue);}
+  .sol-card.live{border-top:2px solid var(--blue);}
   .sol-status{
-    align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.5px;
-    padding:0.35rem 0.7rem;border-radius:20px;margin-bottom:1.4rem;text-transform:uppercase;
+    align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.5px;
+    padding:0.3rem 0.6rem;margin-bottom:1.4rem;text-transform:uppercase;border:1px solid;
   }
-  .sol-status.live{background:rgba(49,209,122,0.12);color:var(--green);border:1px solid rgba(49,209,122,0.3);}
-  .sol-status.dev{background:rgba(224,166,56,0.1);color:var(--amber);border:1px solid rgba(224,166,56,0.3);}
-  .sol-status.custom{background:rgba(255,255,255,0.05);color:var(--text-gray);border:1px solid var(--line);}
+  .sol-status.live{color:var(--green);border-color:var(--green);}
+  .sol-status.dev{color:var(--amber);border-color:var(--amber);}
+  .sol-status.custom{color:var(--text-gray);border-color:var(--line);}
   .sol-card h3{font-size:1.4rem;font-weight:600;margin-bottom:0.8rem;}
   .sol-card .sol-desc{color:var(--text-gray);font-size:0.94rem;margin-bottom:1.6rem;flex-grow:1;}
   .sol-feats{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.6rem;}
   .sol-feats li{font-size:0.86rem;color:var(--text-gray);display:flex;gap:0.6rem;align-items:flex-start;}
   .sol-feats li i{color:var(--blue);margin-top:0.2rem;font-size:0.75rem;}
   .sol-card .sol-cta{font-size:0.85rem;color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);}
-  .sol-card .sol-cta i{font-size:0.75rem;transition:transform .2s;}
-  .sol-card .sol-cta:hover i{transform:translateX(3px);}
+  .sol-card .sol-cta i{font-size:0.75rem;}
 
   /* DEMO */
   .demo{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
   .demo-video{
-    position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--line);
+    position:relative;overflow:hidden;border:1px solid var(--line);
     background:var(--black);aspect-ratio:16/9;
   }
   .demo-video iframe{width:100%;height:100%;border:0;display:block;}
@@ -167,26 +149,26 @@
 
   /* PROCESS */
   .process{background:var(--black);border-top:1px solid var(--line);}
-  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;}
-  .pstep{padding:2rem 1.6rem;border:1px solid var(--line);border-radius:6px;background:var(--panel);position:relative;}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);}
+  .pstep{padding:2rem 1.6rem;background:var(--panel);position:relative;}
   .pstep .pnum{font-family:'JetBrains Mono',monospace;color:var(--blue);font-size:0.8rem;margin-bottom:1rem;display:block;}
   .pstep h4{font-size:1.05rem;margin-bottom:0.6rem;font-weight:600;}
   .pstep p{font-size:0.88rem;color:var(--text-gray);}
 
   /* CTA/CONTACT */
-  .cta{background:radial-gradient(circle at 50% 0%, rgba(59,107,255,0.12), transparent 60%), var(--black);text-align:center;border-top:1px solid var(--line);}
+  .cta{background:var(--black);text-align:center;border-top:1px solid var(--line);}
   .cta-inner{max-width:700px;margin:0 auto;}
   .cta h2{font-size:2.6rem;font-weight:600;letter-spacing:-1px;margin-bottom:1.4rem;}
   .cta p{color:var(--text-gray);font-size:1.05rem;margin-bottom:2.6rem;}
   .contact-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem;}
   .contact-btn{
-    display:flex;align-items:center;gap:0.7rem;padding:1rem 1.8rem;border-radius:4px;
+    display:flex;align-items:center;gap:0.7rem;padding:1rem 1.8rem;
     text-decoration:none;font-size:0.95rem;font-weight:500;cursor:pointer;border:1px solid var(--line);
-    background:var(--panel);color:var(--white);transition:all .25s;
+    background:var(--panel);color:var(--white);transition:border-color .2s;
   }
   .contact-btn.whatsapp{background:var(--blue);border-color:var(--blue);color:#fff;}
-  .contact-btn.whatsapp:hover{background:#5580ff;transform:translateY(-2px);}
-  .contact-btn:hover{border-color:rgba(255,255,255,0.25);}
+  .contact-btn.whatsapp:hover{background:#1e3fb8;}
+  .contact-btn:hover{border-color:rgba(10,14,23,0.25);}
   .copy-note{font-size:0.78rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;min-height:1.2rem;}
 
   /* FOOTER */
@@ -197,14 +179,14 @@
 
   .floating-contact{position:fixed;bottom:2rem;right:2rem;z-index:999;}
   .whatsapp-fab{
-    width:56px;height:56px;background:var(--blue);border-radius:50%;
-    display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;
-    text-decoration:none;box-shadow:0 8px 24px rgba(59,107,255,0.4);transition:all .25s;
+    width:52px;height:52px;background:var(--blue);
+    display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:#fff;
+    text-decoration:none;border:1px solid var(--blue);
   }
-  .whatsapp-fab:hover{transform:scale(1.08);}
+  .whatsapp-fab:hover{background:#1e3fb8;}
 
-  .fade-in{opacity:0;transform:translateY(24px);transition:all .7s ease;}
-  .fade-in.visible{opacity:1;transform:translateY(0);}
+  .fade-in{opacity:0;}
+  .fade-in.visible{opacity:1;}
 
   @media(max-width:1024px){
     .hero-container{grid-template-columns:1fr;}
@@ -247,20 +229,18 @@
 </nav>
 
 <section class="hero" id="hero">
-  <div class="hero-bg-grid"></div>
   <div class="hero-container">
     <div class="hero-content">
-      <div class="eyebrow"><span class="pulse"></span>Optimisation logistique appliquée</div>
+      <div class="eyebrow">[ Optimisation logistique appliquée ]</div>
       <h1>Chaque trajet, chaque tournée <span class="hl">a une version optimale.</span> On la trouve.</h1>
-      <p>OptiFlux conçoit des algorithmes d'optimisation combinatoire sur mesure pour la supply chain et la logistique — kitting, tournées de véhicules, ordonnancement — pour réduire vos distances, vos temps et vos coûts opérationnels.</p>
+      <p>OptiFlux conçoit des algorithmes d'optimisation combinatoire sur mesure pour la supply chain et la logistique — tournées de véhicules, ordonnancement, allocation de ressources — pour réduire vos distances, vos temps et vos coûts opérationnels.</p>
       <div class="btn-group">
         <a href="#demo" class="btn btn-primary"><i class="fas fa-play"></i> Voir la démo</a>
         <a href="#contact" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Discuter du projet</a>
       </div>
       <div class="hero-meta">
-        <div class="meta-item"><span class="mono">01</span><span class="label">Optimisation de kitting — disponible</span></div>
-        <div class="meta-item"><span class="mono">02</span><span class="label">VRP / TSP — en développement</span></div>
-        <div class="meta-item"><span class="mono">03</span><span class="label">Algorithmes logistiques sur mesure</span></div>
+        <div class="meta-item"><span class="mono">01</span><span class="label">Tournées & itinéraires (VRP / TSP) — en développement</span></div>
+        <div class="meta-item"><span class="mono">02</span><span class="label">Algorithmes logistiques sur mesure</span></div>
       </div>
     </div>
 
@@ -268,12 +248,12 @@
       <div class="route-panel">
         <div class="route-panel-head">
           <span class="title">// route_optimizer.log</span>
-          <span class="status"><span class="pulse"></span>solving</span>
+          <span class="status">solving</span>
         </div>
         <div class="route-svg-wrap">
           <svg viewBox="0 0 460 300" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
             <!-- grid dots -->
-            <g fill="rgba(255,255,255,0.12)">
+            <g fill="rgba(10,14,23,0.15)">
               <circle cx="40" cy="60" r="3"/><circle cx="140" cy="40" r="3"/><circle cx="220" cy="90" r="3"/>
               <circle cx="310" cy="50" r="3"/><circle cx="400" cy="70" r="3"/><circle cx="360" cy="160" r="3"/>
               <circle cx="260" cy="220" r="3"/><circle cx="150" cy="240" r="3"/><circle cx="70" cy="190" r="3"/>
@@ -309,23 +289,10 @@
     <div class="section-head fade-in">
       <div class="section-label">// Solutions</div>
       <h2 class="section-title">Un module par problème logistique</h2>
-      <p class="section-sub">Chaque solution résout une classe de problème précise en entrepôt ou sur la route. On déploie ce qui est prêt aujourd'hui, et on construit le reste avec vous.</p>
+      <p class="section-sub">Chaque solution résout une classe de problème précise sur la route ou dans l'organisation logistique. On construit le module avec vous, à partir de vos données réelles.</p>
     </div>
 
-    <div class="sol-grid">
-      <div class="sol-card live fade-in">
-        <span class="sol-status live"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>Disponible</span>
-        <h3>Optimisation de Kitting</h3>
-        <p class="sol-desc">Réorganise l'ordre et le trajet de préparation des kits en entrepôt pour réduire la distance parcourue et le temps de picking, sans changer votre organisation physique.</p>
-        <ul class="sol-feats">
-          <li><i class="fas fa-check"></i>Séquence de prélèvement optimisée automatiquement</li>
-          <li><i class="fas fa-check"></i>Compatible avec votre WMS existant</li>
-          <li><i class="fas fa-check"></i>Contraintes configurables (zones, priorités, effectifs)</li>
-          <li><i class="fas fa-check"></i>Tableau de bord des gains en temps réel</li>
-        </ul>
-        <a href="#demo" class="sol-cta">Voir la démo <i class="fas fa-arrow-right"></i></a>
-      </div>
-
+    <div class="sol-grid" style="grid-template-columns:repeat(2,1fr);">
       <div class="sol-card fade-in">
         <span class="sol-status dev"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>En développement</span>
         <h3>Tournées & Itinéraires (VRP / TSP)</h3>
@@ -335,7 +302,7 @@
           <li><i class="fas fa-check"></i>Fenêtres horaires et capacités</li>
           <li><i class="fas fa-check"></i>Recalcul dynamique en cas d'imprévu</li>
         </ul>
-        <a href="#contact" class="sol-cta">Être informé du lancement <i class="fas fa-arrow-right"></i></a>
+        <a href="#demo" class="sol-cta">Voir la démo <i class="fas fa-arrow-right"></i></a>
       </div>
 
       <div class="sol-card fade-in">
@@ -356,19 +323,19 @@
 <section class="demo" id="demo">
   <div class="section-inner demo-grid">
     <div class="demo-content fade-in">
-      <div class="demo-badge"><i class="fas fa-play-circle"></i> Démo — Optimisation de Kitting</div>
-      <h2>Regardez l'algorithme reséquencer une préparation en temps réel</h2>
-      <p>Cette démo montre le module de kitting sur un cas réel : import des commandes, calcul de la séquence optimale, puis comparaison avant/après sur la distance et le temps de préparation.</p>
+      <div class="demo-badge"><i class="fas fa-play-circle"></i> Démo — Optimisation de Tournées</div>
+      <h2>Regardez l'algorithme recalculer une tournée en temps réel</h2>
+      <p>Cette démo montre le module de tournées sur un cas réel : import des points de livraison, calcul de l'itinéraire optimal, puis comparaison avant/après sur la distance et le temps de trajet.</p>
       <ul class="demo-list">
-        <li><span class="num">01</span>Import d'une liste de commandes à préparer</li>
-        <li><span class="num">02</span>Calcul de la séquence de picking optimale</li>
+        <li><span class="num">01</span>Import d'une liste de points à livrer ou visiter</li>
+        <li><span class="num">02</span>Calcul de l'itinéraire optimal</li>
         <li><span class="num">03</span>Comparaison chiffrée avant / après optimisation</li>
       </ul>
       <a href="#contact" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Demander une démo personnalisée</a>
     </div>
     <div class="demo-video fade-in">
       <!-- Remplacer VIDEO_ID par l'identifiant de la vidéo YouTube de démo -->
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Démo OptiFlux — Optimisation de Kitting" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Démo OptiFlux — Optimisation de Tournées" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -392,7 +359,7 @@
 <section class="cta" id="contact">
   <div class="cta-inner">
     <h2>Un problème d'optimisation à résoudre ?</h2>
-    <p>Décrivez-moi votre cas — kitting, tournées, ou autre problème combinatoire — et je vous dis en quelques minutes si c'est faisable.</p>
+    <p>Décrivez-moi votre cas — tournées, ordonnancement, ou autre problème logistique — et je vous dis en quelques minutes si c'est faisable.</p>
     <div class="contact-row">
       <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="contact-btn whatsapp" target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
