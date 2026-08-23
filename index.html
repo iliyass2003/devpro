@@ -1,1399 +1,458 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services Web Premium | SDSpaces</title>
-        <link rel="icon" type="image/png" href="apple-touch-icon.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            /* Couleurs mode sombre (par défaut) */
-            --black: #0a0a0a;
-            --dark-gray: #1a1a1a;
-            --medium-gray: #2a2a2a;
-            --light-gray: #3a3a3a;
-            --text-gray: #a0a0a0;
-            --white: #ffffff;
-            --off-white: #f5f5f5;
-        }
-        
-        /* Mode clair */
-        body.light-mode {
-            --black: #ffffff;
-            --dark-gray: #f5f5f5;
-            --medium-gray: #e5e5e5;
-            --light-gray: #d5d5d5;
-            --text-gray: #666666;
-            --white: #0a0a0a;
-            --off-white: #1a1a1a;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 2rem 0;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode nav {
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        nav.scrolled {
-            padding: 1rem 0;
-            background: rgba(10, 10, 10, 0.95);
-        }
-
-        body.light-mode nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .theme-toggle {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: transparent;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin-left: auto;
-            margin-right: 2rem;
-        }
-        
-        .theme-toggle:hover {
-            border-color: var(--white);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        body.light-mode .theme-toggle {
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-
-        body.light-mode .theme-toggle:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 4rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 1px;
-            background: var(--white);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--white);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .burger {
-            display: none;
-            cursor: pointer;
-        }
-
-        .burger div {
-            width: 25px;
-            height: 2px;
-            background-color: var(--white);
-            margin: 6px 0;
-            transition: all 0.3s;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 10rem 3rem 6rem;
-            background: var(--black);
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
-        }
-
-        body.light-mode .hero::before {
-            background: radial-gradient(circle at top right, rgba(0, 0, 0, 0.03) 0%, transparent 60%);
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 6rem;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-content h1 {
-            font-size: 4.5rem;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            color: var(--white);
-            letter-spacing: -2px;
-        }
-
-        .hero-content h1 strong {
-            font-weight: 600;
-            display: block;
-            margin-top: 0.5rem;
-        }
-
-        .hero-content p {
-            font-size: 1.15rem;
-            color: var(--text-gray);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            max-width: 550px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            background: var(--medium-gray);
-            border: 1px solid var(--light-gray);
-            border-radius: 50px;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            color: var(--white);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .btn {
-            padding: 1.1rem 2.5rem;
-            border-radius: 2px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        .btn-primary:hover {
-            background: var(--off-white);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        body.light-mode .btn-outline {
-            border: 1px solid rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--white);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .btn-outline:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .hero-stats {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .stat {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            background: var(--dark-gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            overflow: hidden;
-        }
-
-        body.light-mode .hero-image-wrapper {
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .hero-image-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100%;
-            height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: -1;
-        }
-
-        body.light-mode .hero-image-wrapper::after {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: grayscale(30%) brightness(0.9);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(1.05);
-        }
-        
-        .hero-image-wrapper:hover img {
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1);
-        }
-
-        .services-section {
-            padding: 8rem 3rem;
-            background: var(--black);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .services-section {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 6rem;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--white);
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-gray);
-            max-width: 600px;
-        }
-
-        .service-card {
-            background: var(--dark-gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 4rem;
-            margin-bottom: 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        body.light-mode .service-card {
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 2px;
-            height: 0;
-            background: var(--white);
-            transition: height 0.4s ease;
-        }
-
-        .service-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(26, 26, 26, 0.8);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
-        }
-
-        body.light-mode .service-card:hover {
-            border-color: rgba(0, 0, 0, 0.15);
-            background: rgba(245, 245, 245, 0.8);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-card:hover::before {
-            height: 100%;
-        }
-
-        .service-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .service-header {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .service-title-area h3 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 0.8rem;
-            color: var(--white);
-            letter-spacing: -0.5px;
-        }
-
-        .service-subtitle {
-            font-size: 1rem;
-            color: var(--text-gray);
-            font-weight: 300;
-        }
-
-        .service-price {
-            text-align: right;
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--white);
-            letter-spacing: -2px;
-        }
-
-        .price-period {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-        }
-
-        .service-description {
-            font-size: 1.05rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            max-width: 800px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .feature {
-            display: flex;
-            gap: 1.2rem;
-            align-items: flex-start;
-        }
-
-        .feature-icon {
-            width: 45px;
-            height: 45px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.1rem;
-            color: var(--white);
-        }
-
-        body.light-mode .feature-icon {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-content h4 {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.4rem;
-            color: var(--white);
-        }
-
-        .feature-content p {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        .ideal-tag {
-            display: inline-block;
-            margin-top: 2.5rem;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-            color: var(--text-gray);
-        }
-
-        body.light-mode .ideal-tag {
-            background: rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .ideal-tag strong {
-            color: var(--white);
-            font-weight: 500;
-        }
-
-        .process-section {
-            padding: 8rem 3rem;
-            background: var(--dark-gray);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .process-section {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 2rem;
-            margin-top: 5rem;
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .process-step::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: -1rem;
-            width: 2rem;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        body.light-mode .process-step::after {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .process-step:last-child::after {
-            display: none;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: var(--white);
-            margin: 0 auto 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode .step-number {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .process-step:hover .step-number {
-            border-color: var(--white);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .process-step:hover .step-number {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .process-step h4 {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.8rem;
-            color: var(--white);
-        }
-
-        .process-step p {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        .cta-section {
-            padding: 10rem 3rem;
-            background: var(--black);
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .cta-section {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-content h2 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            color: var(--white);
-            letter-spacing: -1.5px;
-        }
-
-        .cta-content p {
-            font-size: 1.15rem;
-            color: var(--text-gray);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode .contact-info {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-item {
-            text-decoration: none;
-            color: var(--text-gray);
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-item:hover {
-            color: var(--white);
-        }
-
-        .contact-item i {
-            margin-right: 0.5rem;
-        }
-
-        footer {
-            padding: 4rem 3rem;
-            background: var(--black);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        body.light-mode footer {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-text {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer-copyright {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            letter-spacing: 0.5px;
-        }
-
-        body.light-mode .footer-copyright {
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .floating-contact {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 999;
-        }
-
-        .whatsapp-btn {
-            width: 60px;
-            height: 60px;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--black);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-        }
-
-        body.light-mode .whatsapp-btn:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .zoom-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .zoom-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .rotate-in {
-            opacity: 0;
-            transform: rotate(-5deg) scale(0.95);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .rotate-in.visible {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-
-        @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
-            .hero-image-wrapper {
-                height: 400px;
-            }
-
-            .process-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .process-step::after {
-                display: none;
-            }
-
-            .service-header {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            .service-price {
-                text-align: left;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 2rem;
-            }
-
-            .theme-toggle {
-                margin-right: 1rem;
-                margin-left: 0;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: rgba(10, 10, 10, 0.98);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                transition: left 0.3s;
-            }
-
-            body.light-mode .nav-links {
-                background: rgba(255, 255, 255, 0.98);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .burger {
-                display: block;
-            }
-
-            .burger.active .line1 {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .burger.active .line2 {
-                opacity: 0;
-            }
-
-            .burger.active .line3 {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .hero {
-                padding: 8rem 2rem 4rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .services-section,
-            .process-section,
-            .cta-section {
-                padding: 5rem 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .cta-content h2 {
-                font-size: 2rem;
-            }
-
-            .service-card {
-                padding: 2rem;
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OptiFlux — Solutions d'Optimisation Combinatoire</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#080b12;
+    --panel:#0e131e;
+    --panel-2:#121826;
+    --line: rgba(255,255,255,0.07);
+    --white:#eef1f7;
+    --text-gray:#8a93a8;
+    --text-dim:#5b6478;
+    --blue:#3b6bff;
+    --blue-soft: rgba(59,107,255,0.12);
+    --blue-line: rgba(59,107,255,0.35);
+    --green:#31d17a;
+    --amber:#e0a638;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  ::selection{background:var(--blue);color:#fff;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;width:100%;z-index:1000;
+    padding:1.4rem 0;
+    background:rgba(8,11,18,0.75);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+    transition:padding .3s ease, background .3s ease;
+  }
+  nav.scrolled{padding:0.9rem 0;background:rgba(8,11,18,0.95);}
+  .nav-container{max-width:1360px;margin:0 auto;padding:0 3rem;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:0.6rem;font-weight:700;font-size:1.25rem;letter-spacing:0.5px;}
+  .logo .dot{width:9px;height:9px;background:var(--blue);border-radius:1px;transform:rotate(45deg);box-shadow:0 0 12px var(--blue);}
+  .nav-links{display:flex;gap:2.6rem;list-style:none;align-items:center;}
+  .nav-links a{color:var(--text-gray);text-decoration:none;font-size:0.9rem;letter-spacing:0.3px;transition:color .25s;}
+  .nav-links a:hover{color:var(--white);}
+  .nav-cta{
+    padding:0.7rem 1.4rem;background:var(--blue);color:#fff !important;
+    border-radius:3px;font-size:0.85rem;font-weight:500;text-decoration:none;
+    display:flex;align-items:center;gap:0.5rem;transition:all .25s;
+  }
+  .nav-cta:hover{background:#5580ff;transform:translateY(-1px);}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:22px;height:2px;background:var(--white);}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;
+    padding:9rem 3rem 5rem;position:relative;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(59,107,255,0.14) 0%, transparent 45%),
+      var(--black);
+  }
+  .hero-bg-grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 70% 60% at 60% 30%, black, transparent);
+    pointer-events:none;
+  }
+  .hero-container{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:4rem;align-items:center;position:relative;z-index:1;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:0.6rem;
+    padding:0.5rem 1rem;border:1px solid var(--blue-line);background:var(--blue-soft);
+    border-radius:50px;font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;
+    font-family:'JetBrains Mono',monospace;color:#a9bdff;margin-bottom:2rem;
+  }
+  .eyebrow .pulse{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .hero-content h1{font-size:3.4rem;font-weight:600;line-height:1.12;letter-spacing:-1.5px;margin-bottom:1.6rem;}
+  .hero-content h1 .hl{color:var(--blue);}
+  .hero-content p{font-size:1.08rem;color:var(--text-gray);max-width:520px;margin-bottom:2.6rem;}
+  .btn-group{display:flex;gap:1rem;margin-bottom:3.5rem;flex-wrap:wrap;}
+  .btn{padding:1rem 1.9rem;border-radius:3px;font-weight:500;font-size:0.92rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer;letter-spacing:0.2px;display:inline-flex;align-items:center;gap:0.6rem;}
+  .btn-primary{background:var(--blue);color:#fff;}
+  .btn-primary:hover{background:#5580ff;transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
+  .btn-outline:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.03);}
+  .hero-meta{display:flex;gap:2.6rem;padding-top:2.2rem;border-top:1px solid var(--line);flex-wrap:wrap;}
+  .meta-item .mono{font-size:0.78rem;color:var(--blue);letter-spacing:0.5px;display:block;margin-bottom:0.3rem;}
+  .meta-item span.label{font-size:0.85rem;color:var(--text-dim);}
+
+  /* HERO VISUAL — route optimization signature */
+  .route-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:6px;
+    padding:1.6rem;position:relative;overflow:hidden;
+  }
+  .route-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;}
+  .route-panel-head .title{font-size:0.78rem;font-family:'JetBrains Mono',monospace;color:var(--text-dim);letter-spacing:0.5px;}
+  .route-panel-head .status{font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--green);display:flex;align-items:center;gap:0.4rem;}
+  .route-panel-head .status .pulse{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite;}
+  .route-svg-wrap{background:var(--black);border:1px solid var(--line);border-radius:4px;padding:1rem;}
+  .route-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-top:1.2rem;}
+  .rstat{background:var(--panel-2);border:1px solid var(--line);border-radius:4px;padding:0.9rem 0.8rem;}
+  .rstat .val{font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:var(--white);font-weight:500;}
+  .rstat .val.down{color:var(--green);}
+  .rstat .lab{font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;margin-top:0.3rem;}
+
+  /* SECTION SHARED */
+  section{padding:7rem 3rem;position:relative;}
+  .section-inner{max-width:1360px;margin:0 auto;}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:1.2rem;}
+  .section-title{font-size:2.5rem;font-weight:600;letter-spacing:-1px;margin-bottom:1.2rem;}
+  .section-sub{color:var(--text-gray);max-width:640px;font-size:1.05rem;}
+  .section-head{margin-bottom:4rem;}
+
+  /* SOLUTIONS */
+  .solutions{background:var(--black);border-top:1px solid var(--line);}
+  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+  .sol-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:6px;
+    padding:2.4rem;display:flex;flex-direction:column;transition:all .3s ease;position:relative;
+  }
+  .sol-card.live{border-color:var(--blue-line);background:linear-gradient(180deg, rgba(59,107,255,0.06), var(--panel) 40%);}
+  .sol-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.18);}
+  .sol-card.live:hover{border-color:var(--blue);}
+  .sol-status{
+    align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.5px;
+    padding:0.35rem 0.7rem;border-radius:20px;margin-bottom:1.4rem;text-transform:uppercase;
+  }
+  .sol-status.live{background:rgba(49,209,122,0.12);color:var(--green);border:1px solid rgba(49,209,122,0.3);}
+  .sol-status.dev{background:rgba(224,166,56,0.1);color:var(--amber);border:1px solid rgba(224,166,56,0.3);}
+  .sol-status.custom{background:rgba(255,255,255,0.05);color:var(--text-gray);border:1px solid var(--line);}
+  .sol-card h3{font-size:1.4rem;font-weight:600;margin-bottom:0.8rem;}
+  .sol-card .sol-desc{color:var(--text-gray);font-size:0.94rem;margin-bottom:1.6rem;flex-grow:1;}
+  .sol-feats{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.6rem;}
+  .sol-feats li{font-size:0.86rem;color:var(--text-gray);display:flex;gap:0.6rem;align-items:flex-start;}
+  .sol-feats li i{color:var(--blue);margin-top:0.2rem;font-size:0.75rem;}
+  .sol-card .sol-cta{font-size:0.85rem;color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);}
+  .sol-card .sol-cta i{font-size:0.75rem;transition:transform .2s;}
+  .sol-card .sol-cta:hover i{transform:translateX(3px);}
+
+  /* DEMO */
+  .demo{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .demo-video{
+    position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--line);
+    background:var(--black);aspect-ratio:16/9;
+  }
+  .demo-video iframe{width:100%;height:100%;border:0;display:block;}
+  .demo-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem;}
+  .demo-content h2{font-size:2.2rem;font-weight:600;letter-spacing:-0.5px;margin-bottom:1.2rem;}
+  .demo-content p{color:var(--text-gray);margin-bottom:2rem;font-size:1.02rem;}
+  .demo-list{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:2.2rem;}
+  .demo-list li{display:flex;gap:0.9rem;align-items:flex-start;font-size:0.95rem;color:var(--white);}
+  .demo-list li .num{font-family:'JetBrains Mono',monospace;color:var(--blue);font-size:0.8rem;min-width:22px;}
+
+  /* PROCESS */
+  .process{background:var(--black);border-top:1px solid var(--line);}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;}
+  .pstep{padding:2rem 1.6rem;border:1px solid var(--line);border-radius:6px;background:var(--panel);position:relative;}
+  .pstep .pnum{font-family:'JetBrains Mono',monospace;color:var(--blue);font-size:0.8rem;margin-bottom:1rem;display:block;}
+  .pstep h4{font-size:1.05rem;margin-bottom:0.6rem;font-weight:600;}
+  .pstep p{font-size:0.88rem;color:var(--text-gray);}
+
+  /* CTA/CONTACT */
+  .cta{background:radial-gradient(circle at 50% 0%, rgba(59,107,255,0.12), transparent 60%), var(--black);text-align:center;border-top:1px solid var(--line);}
+  .cta-inner{max-width:700px;margin:0 auto;}
+  .cta h2{font-size:2.6rem;font-weight:600;letter-spacing:-1px;margin-bottom:1.4rem;}
+  .cta p{color:var(--text-gray);font-size:1.05rem;margin-bottom:2.6rem;}
+  .contact-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem;}
+  .contact-btn{
+    display:flex;align-items:center;gap:0.7rem;padding:1rem 1.8rem;border-radius:4px;
+    text-decoration:none;font-size:0.95rem;font-weight:500;cursor:pointer;border:1px solid var(--line);
+    background:var(--panel);color:var(--white);transition:all .25s;
+  }
+  .contact-btn.whatsapp{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .contact-btn.whatsapp:hover{background:#5580ff;transform:translateY(-2px);}
+  .contact-btn:hover{border-color:rgba(255,255,255,0.25);}
+  .copy-note{font-size:0.78rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;min-height:1.2rem;}
+
+  /* FOOTER */
+  footer{padding:3rem 3rem;border-top:1px solid var(--line);}
+  .footer-inner{max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-inner .logo{font-size:1.05rem;}
+  .footer-inner p{font-size:0.82rem;color:var(--text-dim);}
+
+  .floating-contact{position:fixed;bottom:2rem;right:2rem;z-index:999;}
+  .whatsapp-fab{
+    width:56px;height:56px;background:var(--blue);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;
+    text-decoration:none;box-shadow:0 8px 24px rgba(59,107,255,0.4);transition:all .25s;
+  }
+  .whatsapp-fab:hover{transform:scale(1.08);}
+
+  .fade-in{opacity:0;transform:translateY(24px);transition:all .7s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+
+  @media(max-width:1024px){
+    .hero-container{grid-template-columns:1fr;}
+    .hero-content h1{font-size:2.6rem;}
+    .sol-grid{grid-template-columns:1fr;}
+    .demo-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .process-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .nav-links{position:fixed;top:70px;left:-100%;width:100%;height:calc(100vh - 70px);background:rgba(8,11,18,0.98);flex-direction:column;justify-content:center;gap:2rem;transition:left .3s;}
+    .nav-links.active{left:0;}
+    .burger{display:flex;}
+    .nav-cta{display:none;}
+    section{padding:4.5rem 1.6rem;}
+    .hero{padding:7rem 1.6rem 3rem;}
+    .nav-container{padding:0 1.6rem;}
+    .hero-content h1{font-size:2.1rem;}
+    .section-title{font-size:1.9rem;}
+    .process-grid{grid-template-columns:1fr;}
+    .route-stats{grid-template-columns:1fr 1fr;}
+    .cta h2{font-size:2rem;}
+    .contact-row{flex-direction:column;}
+  }
+</style>
 </head>
 <body>
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">SDSpaces</div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
-                <i class="fas fa-moon"></i>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#hero">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Processus</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        </div>
-    </nav>
 
-    <section class="hero" id="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="badge">Solutions Web Premium</div>
-                <h1>
-                    Créez Votre
-                    <strong>Présence Digitale Professionnelle</strong>
-                </h1>
-                <p>
-                    Sites vitrines élégants, boutiques e-commerce performantes, systèmes de gestion personnalisés. Des solutions adaptées à votre activité et votre budget.
-                </p>
-                <div class="btn-group">
-                    <a href="#services" class="btn btn-primary">Découvrir nos Services</a>
-                    <a href="#contact" class="btn btn-outline">Discutons de votre projet</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">80+</div>
-                        <div class="stat-label">Projets Réalisés</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Satisfaction Client</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Support Disponible</div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-image-wrapper">
-                    <img src="ana.png" alt="Site web professionnel">
-                </div>
-            </div>
-        </div>
-    </section>
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo"><span class="dot"></span>OPTIFLUX</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Accueil</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#demo">Démo</a></li>
+      <li><a href="#process">Processus</a></li>
+      <li><a href="#contact" class="nav-cta">Discuter du projet</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
 
-    <section class="services-section" id="services">
-        <div class="services-container">
-            <div class="section-header slide-left">
-                <div class="section-label">Ce que nous offrons</div>
-                <h2 class="section-title">Nos Services</h2>
-                <p class="section-subtitle">Des solutions complètes et professionnelles pour tous vos besoins digitaux</p>
-            </div>
-
-            <div class="service-card slide-left">
-                <div class="service-header">
-                    <div class="service-title-area">
-                        <h3>Site Vitrine</h3>
-                        <p class="service-subtitle">Élégant et professionnel</p>
-                    </div>
-                    <div class="service-price">
-                        <div class="price">50€</div>
-                    </div>
-                </div>
-                
-                <p class="service-description">
-                    Un site simple et élégant pour présenter votre activité de manière professionnelle. Design moderne, responsive et optimisé pour les moteurs de recherche.
-                </p>
-
-                <div class="features-grid">
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
-                        <div class="feature-content">
-                            <h4>Pages complètes</h4>
-                            <p>Accueil, À propos, Services/Produits, Contact</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <div class="feature-content">
-                            <h4>Design responsive</h4>
-                            <p>Adapté ordinateur & mobile</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-search"></i></div>
-                        <div class="feature-content">
-                            <h4>Référencement SEO</h4>
-                            <p>Optimisation pour Google</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-palette"></i></div>
-                        <div class="feature-content">
-                            <h4>Personnalisation</h4>
-                            <p>Logo, textes et images intégrés</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ideal-tag">
-                    <strong>Idéal pour :</strong> Artisans, indépendants, petites entreprises, portfolio personnel
-                </div>
-            </div>
-
-            <div class="service-card slide-right">
-                <div class="service-header">
-                    <div class="service-title-area">
-                        <h3>Site E-commerce (COD)</h3>
-                        <p class="service-subtitle">Boutique complète avec paiement à la livraison</p>
-                    </div>
-                    <div class="service-price">
-                        <div class="price">350€</div>
-                    </div>
-                </div>
-                
-                <p class="service-description">
-                    Boutique en ligne complète avec système de gestion administrative et paiement Cash On Delivery. Interface intuitive pour vos clients et tableau de bord complet pour vous.
-                </p>
-
-                <div class="features-grid">
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-shopping-bag"></i></div>
-                        <div class="feature-content">
-                            <h4>Pages e-commerce</h4>
-                            <p>Accueil, Produits, À propos, Contact</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
-                        <div class="feature-content">
-                            <h4>Gestion clients</h4>
-                            <p>Dashboard administrateur complet</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-boxes"></i></div>
-                        <div class="feature-content">
-                            <h4>Gestion produits</h4>
-                            <p>Ajout, modification, gestion stock</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-clipboard-list"></i></div>
-                        <div class="feature-content">
-                            <h4>Gestion commandes</h4>
-                            <p>Suivi et traitement</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
-                        <div class="feature-content">
-                            <h4>Paiement COD</h4>
-                            <p>Cash On Delivery avec confirmation</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        <div class="feature-content">
-                            <h4>Performance</h4>
-                            <p>Interface rapide + SEO optimisé</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ideal-tag">
-                    <strong>Idéal pour :</strong> Boutiques locales, ventes par livraison, commerce en ligne
-                </div>
-            </div>
-
-            <div class="service-card slide-left">
-                <div class="service-header">
-                    <div class="service-title-area">
-                        <h3>Maintenance & Hébergement</h3>
-                        <p class="service-subtitle">Tranquillité d'esprit totale</p>
-                    </div>
-                    <div class="service-price">
-                        <div class="price">100€</div>
-                        <div class="price-period">par an</div>
-                    </div>
-                </div>
-                
-                <div class="features-grid">
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-server"></i></div>
-                        <div class="feature-content">
-                            <h4>Hébergement sécurisé</h4>
-                            <p>Inclus dans le forfait annuel</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-save"></i></div>
-                        <div class="feature-content">
-                            <h4>Sauvegardes régulières</h4>
-                            <p>Protection de vos données</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                        <div class="feature-content">
-                            <h4>Mises à jour</h4>
-                            <p>Site toujours à jour et sécurisé</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon"><i class="fas fa-life-ring"></i></div>
-                        <div class="feature-content">
-                            <h4>Support technique</h4>
-                            <p>Assistance en cas de bug ou ajout mineur</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card slide-right">
-                <div class="service-header">
-                    <div class="service-title-area">
-                        <h3>Fonctionnalités Supplémentaires</h3>
-                        <p class="service-subtitle">Personnalisez votre site</p>
-                    </div>
-                    <div class="service-price">
-                        <div class="price" style="font-size: 2rem;">À partir de 30€</div>
-                    </div>
-                </div>
-                
-                <p class="service-description">
-                    Ajout ou développement d'une nouvelle fonction selon vos besoins spécifiques. Gestion personnalisée, modules sur mesure, automatisations, nouvelles structures. Prix selon la complexité du projet.
-                </p>
-            </div>
-
-            <div class="service-card zoom-in" style="border-color: rgba(255, 255, 255, 0.15);">
-                <div class="service-header">
-                    <div class="service-title-area">
-                        <h3>Site de Gestion Sur Mesure</h3>
-                        <p class="service-subtitle">Solution personnalisée pour votre entreprise</p>
-                    </div>
-                    <div class="service-price">
-                        <div class="price" style="font-size: 2rem;">À partir de 300€</div>
-                    </div>
-                </div>
-                
-                <p class="service-description">
-                    Création d'un système de gestion adapté exactement à vos besoins et processus métier. Analyse approfondie de vos besoins, développement personnalisé et formation complète incluse pour une prise en main optimale.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="process-section" id="process">
-        <div class="services-container">
-            <div class="section-header slide-left">
-                <div class="section-label">Comment ça marche</div>
-                <h2 class="section-title">Processus de Travail</h2>
-                <p class="section-subtitle">Simple, transparent et collaboratif</p>
-            </div>
-
-            <div class="process-grid">
-                <div class="process-step zoom-in">
-                    <div class="step-number">01</div>
-                    <h4>Premier Contact</h4>
-                    <p>Contactez-moi via le chat du site, par email ou directement par téléphone pour discuter de votre projet.</p>
-                </div>
-
-                <div class="process-step zoom-in">
-                    <div class="step-number">02</div>
-                    <h4>Appel Découverte</h4>
-                    <p>Nous organisons un appel pour définir vos besoins précis, vos objectifs et vos attentes.</p>
-                </div>
-
-                <div class="process-step zoom-in">
-                    <div class="step-number">03</div>
-                    <h4>Création</h4>
-                    <p>Je développe votre site selon vos spécifications, avec des points d'étape réguliers pour validation.</p>
-                </div>
-
-                <div class="process-step zoom-in">
-                    <div class="step-number">04</div>
-                    <h4>Déploiement</h4>
-                    <p>Mise en ligne de votre site sur un hébergement sécurisé et performant.</p>
-                </div>
-
-                <div class="process-step zoom-in">
-                    <div class="step-number">05</div>
-                    <h4>Formation</h4>
-                    <p>Session de formation complète pour vous permettre d'utiliser et gérer votre site en toute autonomie.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section" id="contact">
-        <div class="cta-content">
-            <h2>Prêt à Lancer Votre Projet ?</h2>
-            <p>Parlons de vos besoins et trouvons ensemble la solution parfaite pour votre activité. Un échange simple et direct pour un résultat à la hauteur de vos ambitions.</p>
-            <div style="margin-top: 3rem;">
-                <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20web" class="btn btn-primary" style="font-size: 1rem; padding: 1.2rem 3rem;">
-                    Discutons de Votre Projet
-                </a>
-            </div>
-            <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-gray); letter-spacing: 0.5px;">
-                RÉPONSE RAPIDE • DEVIS GRATUIT • SANS ENGAGEMENT
-            </p>
-            
-            <div class="contact-info">
-                <a href="tel:+212608093489" class="contact-item">
-                    <i class="fas fa-phone"></i> +212 608 093 489
-                </a>
-                <a href="mailto:iliyass.meliani@gmail.com" class="contact-item">
-                    <i class="fas fa-envelope"></i> iliyass.meliani@gmail.com
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">SDSpaces</div>
-            <p class="footer-text">
-                Création de sites web professionnels adaptés à tous types d'activités. Design moderne, solutions sur mesure, support complet.
-            </p>
-            <div class="footer-copyright">
-                © 2025 SDSpaces. Tous droits réservés.
-            </div>
-        </div>
-    </footer>
-
-    <div class="floating-contact">
-        <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20web" class="whatsapp-btn" title="Contactez-moi sur WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+<section class="hero" id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="eyebrow"><span class="pulse"></span>Optimisation combinatoire & quantitative</div>
+      <h1>Chaque problème complexe <span class="hl">a une version optimale.</span> On la trouve.</h1>
+      <p>OptiFlux conçoit des algorithmes d'optimisation sur mesure pour plusieurs domaines — supply chain & logistique, finance quantitative, et tout autre problème combinatoire — pour réduire vos coûts, vos risques et vos temps opérationnels.</p>
+      <div class="btn-group">
+        <a href="#demo" class="btn btn-primary"><i class="fas fa-play"></i> Voir la démo</a>
+        <a href="#contact" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Discuter du projet</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item"><span class="mono">01</span><span class="label">Supply Chain & Logistique</span></div>
+        <div class="meta-item"><span class="mono">02</span><span class="label">Finance Quantitative</span></div>
+        <div class="meta-item"><span class="mono">03</span><span class="label">Tout autre domaine — sur mesure</span></div>
+      </div>
     </div>
 
-    <script>
-        // Navigation
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navbar = document.getElementById('navbar');
-        
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            burger.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                burger.classList.remove('active');
-            });
-        });
+    <div class="hero-image">
+      <div class="route-panel">
+        <div class="route-panel-head">
+          <span class="title">// route_optimizer.log</span>
+          <span class="status"><span class="pulse"></span>solving</span>
+        </div>
+        <div class="route-svg-wrap">
+          <svg viewBox="0 0 460 300" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+            <!-- grid dots -->
+            <g fill="rgba(255,255,255,0.12)">
+              <circle cx="40" cy="60" r="3"/><circle cx="140" cy="40" r="3"/><circle cx="220" cy="90" r="3"/>
+              <circle cx="310" cy="50" r="3"/><circle cx="400" cy="70" r="3"/><circle cx="360" cy="160" r="3"/>
+              <circle cx="260" cy="220" r="3"/><circle cx="150" cy="240" r="3"/><circle cx="70" cy="190" r="3"/>
+              <circle cx="230" cy="150" r="3"/>
+            </g>
+            <!-- messy path -->
+            <path id="messyPath" fill="none" stroke="#e0637a" stroke-width="2" stroke-dasharray="4 4" opacity="0.55"
+              d="M40,60 L310,50 L140,40 L400,70 L70,190 L230,150 L360,160 L150,240 L260,220 L40,60" />
+            <!-- optimized path (animated draw) -->
+            <path id="optPath" fill="none" stroke="#3b6bff" stroke-width="3"
+              d="M40,60 L140,40 L220,90 L310,50 L400,70 L360,160 L260,220 L150,240 L70,190 L40,60"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#3b6bff">
+              <circle cx="40" cy="60" r="5"/><circle cx="140" cy="40" r="5"/><circle cx="220" cy="90" r="5"/>
+              <circle cx="310" cy="50" r="5"/><circle cx="400" cy="70" r="5"/><circle cx="360" cy="160" r="5"/>
+              <circle cx="260" cy="220" r="5"/><circle cx="150" cy="240" r="5"/><circle cx="70" cy="190" r="5"/>
+            </g>
+            <circle cx="40" cy="60" r="8" fill="none" stroke="#31d17a" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="route-stats">
+          <div class="rstat"><div class="val mono">10</div><div class="lab">Points</div></div>
+          <div class="rstat"><div class="val mono down">−38%</div><div class="lab">Distance</div></div>
+          <div class="rstat"><div class="val mono down">−41%</div><div class="lab">Temps trajet</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+<section class="solutions" id="solutions">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="section-label">// Domaines</div>
+      <h2 class="section-title">Un studio d'optimisation, plusieurs domaines</h2>
+      <p class="section-sub">Chaque domaine regroupe plusieurs modules algorithmiques. On déploie ce qui est prêt aujourd'hui, et on construit le reste avec vous — quel que soit le secteur.</p>
+    </div>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <div class="sol-grid">
+      <div class="sol-card live fade-in">
+        <span class="sol-status live"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>1 module disponible</span>
+        <h3>Supply Chain & Logistique</h3>
+        <p class="sol-desc">Optimisation des flux physiques : préparation en entrepôt, tournées de livraison, planification des ressources.</p>
+        <ul class="sol-feats">
+          <li><i class="fas fa-check"></i><strong>Kitting</strong> — séquence de picking optimisée <span class="mono" style="color:var(--green);font-size:0.75rem;margin-left:4px;">disponible</span></li>
+          <li><i class="fas fa-check"></i><strong>Tournées (VRP / TSP)</strong> — livraisons & itinéraires <span class="mono" style="color:var(--amber);font-size:0.75rem;margin-left:4px;">en développement</span></li>
+          <li><i class="fas fa-check"></i>Compatible avec votre WMS / ERP existant</li>
+        </ul>
+        <a href="#demo" class="sol-cta">Voir la démo Kitting <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const themeIcon = themeToggle.querySelector('i');
+      <div class="sol-card fade-in">
+        <span class="sol-status dev"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>À l'étude</span>
+        <h3>Finance Quantitative</h3>
+        <p class="sol-desc">Modélisation de problèmes d'allocation et de décision sous contraintes : portefeuille, risque, exécution — formulés comme des problèmes d'optimisation.</p>
+        <ul class="sol-feats">
+          <li><i class="fas fa-check"></i>Allocation de portefeuille sous contraintes</li>
+          <li><i class="fas fa-check"></i>Optimisation de risque / rendement</li>
+          <li><i class="fas fa-check"></i>Ordonnancement et coûts d'exécution</li>
+        </ul>
+        <a href="#contact" class="sol-cta">Discuter d'un cas précis <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-        // Charger le thème sauvegardé
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.classList.add('light-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
+      <div class="sol-card fade-in">
+        <span class="sol-status custom"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>Sur demande</span>
+        <h3>Autres Domaines</h3>
+        <p class="sol-desc">Tout problème qui se formule comme une optimisation combinatoire ou quantitative — ordonnancement, allocation de ressources, découpe, bin packing, et au-delà.</p>
+        <ul class="sol-feats">
+          <li><i class="fas fa-check"></i>Analyse de faisabilité avant devis</li>
+          <li><i class="fas fa-check"></i>Modélisation adaptée à vos contraintes réelles</li>
+          <li><i class="fas fa-check"></i>Intégration à vos outils métier</li>
+        </ul>
+        <a href="#contact" class="sol-cta">Décrire mon besoin <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            
-            if (body.classList.contains('light-mode')) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'light');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
+<section class="demo" id="demo">
+  <div class="section-inner demo-grid">
+    <div class="demo-content fade-in">
+      <div class="demo-badge"><i class="fas fa-play-circle"></i> Démo — Optimisation de Kitting</div>
+      <h2>Regardez l'algorithme reséquencer une préparation en temps réel</h2>
+      <p>Cette démo montre le module de kitting sur un cas réel : import des commandes, calcul de la séquence optimale, puis comparaison avant/après sur la distance et le temps de préparation.</p>
+      <ul class="demo-list">
+        <li><span class="num">01</span>Import d'une liste de commandes à préparer</li>
+        <li><span class="num">02</span>Calcul de la séquence de picking optimale</li>
+        <li><span class="num">03</span>Comparaison chiffrée avant / après optimisation</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Demander une démo personnalisée</a>
+    </div>
+    <div class="demo-video fade-in">
+      <!-- Remplacer VIDEO_ID par l'identifiant de la vidéo YouTube de démo -->
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Démo OptiFlux — Optimisation de Kitting" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
 
-        // Intersection Observer pour animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="section-label">// Processus</div>
+      <h2 class="section-title">De votre problème à l'algorithme livré</h2>
+      <p class="section-sub">Un déroulé simple, pensé pour un problème d'optimisation, pas pour un site vitrine.</p>
+    </div>
+    <div class="process-grid">
+      <div class="pstep fade-in"><span class="pnum mono">01</span><h4>Cadrage</h4><p>On identifie précisément le problème, les contraintes réelles et l'objectif à minimiser ou maximiser.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">02</span><h4>Modélisation</h4><p>Le problème est formalisé et testé sur vos données pour valider la faisabilité avant tout développement.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">03</span><h4>Intégration</h4><p>L'algorithme est connecté à vos outils existants (WMS, ERP, tableur) sans bouleverser vos process.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">04</span><h4>Suivi</h4><p>Mesure continue des gains réels et ajustements des contraintes au fil de l'usage.</p></div>
+    </div>
+  </div>
+</section>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <h2>Un problème d'optimisation à résoudre ?</h2>
+    <p>Décrivez-moi votre cas — kitting, tournées, ou autre problème combinatoire — et je vous dis en quelques minutes si c'est faisable.</p>
+    <div class="contact-row">
+      <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="contact-btn whatsapp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+      </a>
+      <button class="contact-btn" id="copyEmailBtn" onclick="copyAndOpenEmail()">
+        <i class="fas fa-envelope"></i> iliyass.meliani@gmail.com
+      </button>
+    </div>
+    <div class="copy-note" id="copyNote">&nbsp;</div>
+  </div>
+</section>
 
-        // Observer tous les éléments avec animations
-        document.querySelectorAll('.fade-in, .slide-left, .slide-right, .zoom-in, .rotate-in').forEach(el => {
-            observer.observe(el);
-        });
+<footer>
+  <div class="footer-inner">
+    <div class="logo"><span class="dot"></span>OPTIFLUX</div>
+    <p>© 2025 OptiFlux — Solutions d'optimisation combinatoire.</p>
+  </div>
+</footer>
 
-        // Parallax effect pour hero image
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-image-wrapper');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
-    </script>
+<div class="floating-contact">
+  <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="whatsapp-fab" target="_blank" rel="noopener" title="Contacter sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<script>
+  const burger = document.getElementById('burger');
+  const navLinks = document.querySelector('.nav-links');
+  const navbar = document.getElementById('navbar');
+
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  document.querySelectorAll('.nav-links a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('active')));
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function copyAndOpenEmail(){
+    const email = 'iliyass.meliani@gmail.com';
+    const note = document.getElementById('copyNote');
+    navigator.clipboard.writeText(email).then(() => {
+      note.textContent = 'Email copié — ouverture de votre client mail...';
+    }).catch(() => {
+      note.textContent = 'Ouverture de votre client mail...';
+    });
+    setTimeout(() => {
+      window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Projet d\'optimisation') + '&body=' + encodeURIComponent('Bonjour,\n\nJe souhaite discuter d\'un projet d\'optimisation.\n\n');
+    }, 300);
+  }
+</script>
+
 </body>
 </html>
