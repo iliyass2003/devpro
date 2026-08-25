@@ -210,6 +210,28 @@
     .cta h2{font-size:2rem;}
     .contact-row{flex-direction:column;}
   }
+  /* SPEC SHEET (MDHFVRPTW) */
+  .spec{background:var(--panel);border-top:1px solid var(--line);}
+  .spec-top{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-bottom:1px;}
+  .spec-block{background:var(--black);padding:2rem;}
+  .spec-block h4{font-size:0.78rem;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.9rem;}
+  .spec-block p{color:var(--text-gray);font-size:0.95rem;}
+  .spec-block ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
+  .spec-block ul li{font-size:0.9rem;color:var(--text-gray);display:flex;gap:0.6rem;align-items:flex-start;}
+  .spec-block ul li i{color:var(--blue);margin-top:0.25rem;font-size:0.7rem;}
+  .spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);}
+  .spec-mini{background:var(--black);padding:1.6rem;}
+  .spec-mini h4{font-size:0.72rem;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:0.7rem;}
+  .spec-mini p{font-size:0.85rem;color:var(--text-gray);}
+  .spec-tag{display:inline-flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem;}
+
+  @media(max-width:1024px){
+    .spec-top{grid-template-columns:1fr;}
+    .spec-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .spec-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -235,11 +257,11 @@
       <h1>Chaque trajet, chaque tournée <span class="hl">a une version optimale.</span> On la trouve.</h1>
       <p>OptiFlux conçoit des algorithmes d'optimisation combinatoire sur mesure pour la supply chain et la logistique — tournées de véhicules, ordonnancement, allocation de ressources — pour réduire vos distances, vos temps et vos coûts opérationnels.</p>
       <div class="btn-group">
-        <a href="#demo" class="btn btn-primary"><i class="fas fa-play"></i> Voir la démo</a>
+        <a href="https://meliani.pythonanywhere.com/" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-play"></i> Essayer l'app VRP</a>
         <a href="#contact" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Discuter du projet</a>
       </div>
       <div class="hero-meta">
-        <div class="meta-item"><span class="mono">01</span><span class="label">Tournées & itinéraires (VRP / TSP) — en développement</span></div>
+        <div class="meta-item"><span class="mono">01</span><span class="label">Tournées & itinéraires (VRP / TSP) — disponible en ligne</span></div>
         <div class="meta-item"><span class="mono">02</span><span class="label">Algorithmes logistiques sur mesure</span></div>
       </div>
     </div>
@@ -293,16 +315,19 @@
     </div>
 
     <div class="sol-grid" style="grid-template-columns:repeat(2,1fr);">
-      <div class="sol-card fade-in">
-        <span class="sol-status dev"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>En développement</span>
+      <div class="sol-card live fade-in">
+        <span class="sol-status live"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>Disponible</span>
         <h3>Tournées & Itinéraires (VRP / TSP)</h3>
-        <p class="sol-desc">Résolution de problèmes de tournées de véhicules et de voyageur de commerce : calcul du meilleur ordre de livraison ou de visite pour minimiser distance, temps et nombre de véhicules.</p>
+        <p class="sol-desc">Calculez le meilleur découpage de vos tournées de livraison à partir d'un simple fichier Excel : quel dépôt, quel véhicule, quel ordre de passage. Résultat en quelques secondes, visible sur carte et exportable.</p>
         <ul class="sol-feats">
           <li><i class="fas fa-check"></i>Multi-véhicules, multi-dépôts</li>
           <li><i class="fas fa-check"></i>Fenêtres horaires et capacités</li>
-          <li><i class="fas fa-check"></i>Recalcul dynamique en cas d'imprévu</li>
+          <li><i class="fas fa-check"></i>Résultat sur carte + export Excel</li>
         </ul>
-        <a href="#demo" class="sol-cta">Voir la démo <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:1.4rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);">
+          <a href="https://meliani.pythonanywhere.com/" class="sol-cta" style="border-top:none;padding-top:0;margin-top:0;" target="_blank" rel="noopener">Essayer l'app <i class="fas fa-arrow-right"></i></a>
+          <a href="#mdhfvrptw" class="sol-cta" style="border-top:none;padding-top:0;margin-top:0;color:var(--text-gray);">Fiche technique <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
 
       <div class="sol-card fade-in">
@@ -320,6 +345,67 @@
   </div>
 </section>
 
+<section class="spec" id="mdhfvrptw">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="spec-tag"><i class="fas fa-microchip"></i> Fiche technique</div>
+      <h2 class="section-title">VRP Multi-Dépôts à Flotte Hétérogène avec Fenêtres Horaires (MDHFVRPTW)</h2>
+      <p class="section-sub">Le modèle mathématique derrière le module Tournées & Itinéraires — pour les équipes qui veulent voir ce qu'il y a sous le capot avant d'intégrer.</p>
+    </div>
+
+    <div class="spec-top fade-in">
+      <div class="spec-block">
+        <h4>Contexte</h4>
+        <p>Cas réel le plus fréquent chez les entreprises de distribution : plusieurs entrepôts régionaux, une flotte composée de véhicules de tailles et coûts différents (fourgon, camion 12t, camion 19t), et des clients avec des créneaux de livraison imposés. Il faut décider depuis quel dépôt chaque client est livré, avec quel type de véhicule, et dans quel ordre.</p>
+      </div>
+      <div class="spec-block">
+        <h4>Objectif d'optimisation</h4>
+        <p>Minimiser le coût total (kilométrage, coût fixe par véhicule utilisé, coût horaire chauffeur) en couvrant tous les clients depuis le dépôt le plus pertinent, avec le véhicule le mieux adapté.</p>
+      </div>
+    </div>
+
+    <div class="spec-top fade-in">
+      <div class="spec-block">
+        <h4>Contraintes spécifiques au problème</h4>
+        <ul>
+          <li><i class="fas fa-check"></i>Affectation client → dépôt à déterminer (pas fixée à l'avance)</li>
+          <li><i class="fas fa-check"></i>Plusieurs types de véhicules disponibles par dépôt, avec capacité et coût propres</li>
+          <li><i class="fas fa-check"></i>Chaque tournée part et revient au même dépôt</li>
+          <li><i class="fas fa-check"></i>Nombre de véhicules disponibles limité par type et par dépôt</li>
+        </ul>
+      </div>
+      <div class="spec-block">
+        <h4>Contraintes classiques (exploitation)</h4>
+        <ul>
+          <li><i class="fas fa-check"></i>Fenêtres horaires strictes ou souples par client</li>
+          <li><i class="fas fa-check"></i>Durée maximale de conduite / réglementation du temps de travail</li>
+          <li><i class="fas fa-check"></i>Compatibilité produit/véhicule (ex. chaîne du froid nécessitant un véhicule réfrigéré)</li>
+          <li><i class="fas fa-check"></i>Zones à accès restreint selon le gabarit du véhicule (centre-ville, poids lourds interdits)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="spec-grid fade-in">
+      <div class="spec-mini">
+        <h4>Données d'entrée</h4>
+        <p>Position et capacité de chaque dépôt, parc de véhicules par dépôt (type, capacité, coût), clients (demande, fenêtres horaires, contraintes produit), matrice de distances/temps.</p>
+      </div>
+      <div class="spec-mini">
+        <h4>Données de sortie</h4>
+        <p>Affectation client → dépôt → véhicule → position dans la tournée, coût par tournée, taux d'utilisation par dépôt.</p>
+      </div>
+      <div class="spec-mini">
+        <h4>KPIs</h4>
+        <p>Coût total, taux de remplissage moyen par type de véhicule, équilibrage de charge entre dépôts, taux de respect des fenêtres horaires.</p>
+      </div>
+      <div class="spec-mini">
+        <h4>Complexité</h4>
+        <p>Combine trois sous-problèmes couplés (affectation dépôt, choix du véhicule, séquencement) — résolution par métaheuristiques à grand voisinage (ALNS) ou décomposition en sous-problèmes avec heuristique de coordination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="demo" id="demo">
   <div class="section-inner demo-grid">
     <div class="demo-content fade-in">
@@ -331,7 +417,7 @@
         <li><span class="num">02</span>Calcul de l'itinéraire optimal</li>
         <li><span class="num">03</span>Comparaison chiffrée avant / après optimisation</li>
       </ul>
-      <a href="#contact" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Demander une démo personnalisée</a>
+      <a href="https://meliani.pythonanywhere.com/" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Essayer l'app en direct</a>
     </div>
     <div class="demo-video fade-in">
       <!-- Remplacer VIDEO_ID par l'identifiant de la vidéo YouTube de démo -->
