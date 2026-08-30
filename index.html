@@ -296,11 +296,31 @@
     text-decoration:none;width:100%;
   }
   .cat-link i{font-size:0.78rem;}
-  .cat-link.soon{color:var(--text-dim)!important;}
+  .cat-link:hover{color:#1e3fb8!important;}
 
   @media(max-width:1024px){
     .cat-grid{grid-template-columns:1fr;}
     .cat-body-grid{grid-template-columns:1fr;}
+  }
+
+  /* À PROPOS */
+  .about{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-top{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3.5rem;}
+  .about-top p{color:var(--text-gray);font-size:1.02rem;margin-bottom:1.2rem;}
+  .about-top p:last-child{margin-bottom:0;}
+  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .about-card{background:var(--black);padding:2.2rem;}
+  .about-card i{color:var(--blue);font-size:1.3rem;margin-bottom:1.2rem;display:block;}
+  .about-card h4{font-size:1.05rem;font-weight:600;margin-bottom:0.7rem;}
+  .about-card p{font-size:0.9rem;color:var(--text-gray);}
+  .about-trust{display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line);}
+  .about-trust-item{display:flex;gap:0.8rem;align-items:flex-start;max-width:280px;}
+  .about-trust-item i{color:var(--blue);font-size:1rem;margin-top:0.15rem;}
+  .about-trust-item span{font-size:0.88rem;color:var(--text-gray);}
+
+  @media(max-width:1024px){
+    .about-top{grid-template-columns:1fr;gap:1.5rem;}
+    .about-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -318,6 +338,7 @@
           <a href="#entreposage">Entreposage & Préparation <span class="count">05</span></a>
         </div>
       </li>
+      <li><a href="#apropos">À propos</a></li>
       <li><a href="#demo">Démo</a></li>
       <li><a href="#process">Processus</a></li>
       <li><a href="#contact" class="nav-cta">Discuter du projet</a></li>
@@ -409,11 +430,12 @@
       <div class="sol-card fade-in">
         <span class="sol-status custom"><i class="fas fa-circle" style="font-size:6px;margin-right:4px;"></i>Sur demande</span>
         <h3>Optimisation Logistique Sur Mesure</h3>
-        <p class="sol-desc">Un autre problème logistique à résoudre — ordonnancement d'entrepôt, allocation de ressources, gestion de stock, découpe ? On modélise votre cas et on construit l'algorithme correspondant.</p>
+        <p class="sol-desc">Un autre problème logistique à résoudre — ordonnancement d'entrepôt, allocation de ressources, gestion de stock, découpe ? On modélise votre cas, on construit l'algorithme, et on l'accompagne jusqu'en production.</p>
         <ul class="sol-feats">
           <li><i class="fas fa-check"></i>Analyse de faisabilité avant devis</li>
           <li><i class="fas fa-check"></i>Modélisation adaptée à vos contraintes réelles</li>
-          <li><i class="fas fa-check"></i>Intégration à vos outils métier</li>
+          <li><i class="fas fa-check"></i>Automatisation, intégration à vos outils métier</li>
+          <li><i class="fas fa-check"></i>Déploiement et support dans la durée</li>
         </ul>
         <a href="#contact" class="sol-cta">Décrire mon besoin <i class="fas fa-arrow-right"></i></a>
       </div>
@@ -479,7 +501,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Combine trois sous-problèmes couplés (affectation dépôt, choix du véhicule, séquencement) — métaheuristiques à grand voisinage (ALNS) ou décomposition avec heuristique de coordination.</p>
             </div>
-            <a href="LIEN_A_REMPLACER_MDHFVRPTW" class="cat-link" target="_blank" rel="noopener">Essayer cette solution <i class="fas fa-arrow-right"></i></a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0VRP%20Multi-D%C3%A9p%C3%B4ts%20%C3%A0%20Flotte%20H%C3%A9t%C3%A9rog%C3%A8ne%20%28MDHFVRPTW%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -525,7 +547,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Extension du VRP dynamique — heuristiques d'insertion rapide (cheapest insertion, regret-based) plutôt que des métaheuristiques lentes, pour respecter la contrainte de temps de calcul.</p>
             </div>
-            <a href="LIEN_A_REMPLACER_VRP_DYNAMIQUE" class="cat-link" target="_blank" rel="noopener">Essayer cette solution <i class="fas fa-arrow-right"></i></a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0VRP%20Dynamique%20et%20Stochastique%20%28recalcul%20temps%20r%C3%A9el%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -571,7 +593,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Extension du VRP classique, plus contrainte — métaheuristiques hybrides (recherche à voisinage large, ALNS) en raison du couplage temps/énergie.</p>
             </div>
-            <a href="LIEN_A_REMPLACER_EVRPTW" class="cat-link" target="_blank" rel="noopener">Essayer cette solution <i class="fas fa-arrow-right"></i></a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0VRP%20avec%20Fen%C3%AAtres%20Horaires%20et%20Flotte%20%C3%89lectrique%20%28E-VRPTW%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -617,7 +639,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>NP-difficile (généralisation du bin packing) — heuristiques constructives (extreme points, guillotine cut) combinées à une recherche locale.</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Optimisation%20de%20Chargement%20%28Bin%20Packing%203D%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -663,7 +685,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Problème d'optimisation stochastique ou en programmation linéaire mixte selon le niveau de détail (demande déterministe vs. incertaine).</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Dimensionnement%20et%20Composition%20de%20Flotte%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -707,7 +729,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>NP-difficile, plus contraint qu'un VRP classique du fait des relations de précédence — métaheuristiques (ALNS, recherche tabou) adaptées à l'appariement collecte/livraison.</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Logistique%20Retour%20-%20Livraison%20et%20Collecte%20Simultan%C3%A9es%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -764,7 +786,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Problème d'affectation quadratique (QAP) simplifié — heuristiques de tri par fréquence (ABC/Pareto) combinées à une recherche locale pour les contraintes de compatibilité.</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Slotting%20-%20Affectation%20des%20Emplacements%20de%20Stockage%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -810,7 +832,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>NP-difficile (proche du bin packing avec contrainte de similarité spatiale) — heuristiques gloutonnes (seed order + saving algorithm) ou clustering suivi d'un ajustement de capacité.</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Order%20Batching%20-%20Regroupement%20des%20Commandes%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -856,7 +878,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Cas particulier du TSP sur un graphe contraint — algorithme de Ratliff & Rosenthal (optimal en temps polynomial pour la topologie classique) ou heuristiques (stratégie en S) pour les entrepôts non standards.</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Picker%20Routing%20-%20S%C3%A9quencement%20du%20Trajet%20de%20Pr%C3%A9paration%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -902,7 +924,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Proche d'un ordonnancement de machines parallèles avec fenêtres — programmation linéaire en nombres entiers pour un nombre restreint de quais, ou heuristiques de liste priorisée en temps réel.</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Planification%20des%20Quais%20de%20Chargement%2FD%C3%A9chargement%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -948,13 +970,51 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Optimisation sous incertitude (programmation stochastique ou robuste selon la qualité des prévisions) — programmation linéaire multi-période ou heuristiques de réallocation périodique.</p>
             </div>
-            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Allocation%20Dynamique%20de%20l%27Espace%20de%20Stockage%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
       </div>
     </div>
 
+  </div>
+</section>
+
+<section class="about" id="apropos">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="section-label">// À propos</div>
+      <h2 class="section-title">Une équipe d'ingénieurs, pas une agence généraliste</h2>
+    </div>
+
+    <div class="about-top fade-in">
+      <p>OptiFlux est une entreprise spécialisée dans les solutions d'optimisation logistique et le consulting en supply chain. Nous transformons un problème opérationnel réel — une tournée, un entrepôt, une flotte — en un modèle mathématique rigoureux, puis en un outil que vos équipes utilisent tous les jours.</p>
+      <p>Notre équipe réunit des ingénieurs en développement, des ingénieurs data & optimisation, et des spécialistes en recherche opérationnelle. Cette combinaison nous permet de couvrir tout le cycle : modélisation du problème, résolution algorithmique, développement du produit, et intégration à vos systèmes.</p>
+    </div>
+
+    <div class="about-grid fade-in">
+      <div class="about-card">
+        <i class="fas fa-code"></i>
+        <h4>Ingénierie logicielle</h4>
+        <p>Développement du produit final — interface, API, automatisation — pour que la solution s'intègre à vos outils sans friction.</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-chart-line"></i>
+        <h4>Data & Optimisation</h4>
+        <p>Modélisation des contraintes réelles, préparation des données, choix des algorithmes adaptés à la taille et à la complexité de votre problème.</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-diagram-project"></i>
+        <h4>Recherche Opérationnelle</h4>
+        <p>Formalisation mathématique du problème et sélection des méthodes de résolution (métaheuristiques, programmation linéaire, heuristiques dédiées).</p>
+      </div>
+    </div>
+
+    <div class="about-trust fade-in">
+      <div class="about-trust-item"><i class="fas fa-lock"></i><span>Vos données et votre besoin restent confidentiels, du premier échange à la livraison.</span></div>
+      <div class="about-trust-item"><i class="fas fa-gears"></i><span>Chaque solution est automatisée et connectée à vos outils existants, pas livrée comme un script isolé.</span></div>
+      <div class="about-trust-item"><i class="fas fa-headset"></i><span>Support et ajustements inclus après la mise en production.</span></div>
+    </div>
   </div>
 </section>
 
@@ -996,8 +1056,8 @@
     <div class="process-grid">
       <div class="pstep fade-in"><span class="pnum mono">01</span><h4>Cadrage</h4><p>On identifie précisément le problème, les contraintes réelles et l'objectif à minimiser ou maximiser.</p></div>
       <div class="pstep fade-in"><span class="pnum mono">02</span><h4>Modélisation</h4><p>Le problème est formalisé et testé sur vos données pour valider la faisabilité avant tout développement.</p></div>
-      <div class="pstep fade-in"><span class="pnum mono">03</span><h4>Intégration</h4><p>L'algorithme est connecté à vos outils existants (WMS, ERP, tableur) sans bouleverser vos process.</p></div>
-      <div class="pstep fade-in"><span class="pnum mono">04</span><h4>Suivi</h4><p>Mesure continue des gains réels et ajustements des contraintes au fil de l'usage.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">03</span><h4>Automatisation</h4><p>L'algorithme est automatisé et connecté à vos outils existants (WMS, ERP, tableur) pour tourner sans intervention manuelle.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">04</span><h4>Déploiement & Support</h4><p>Mise en production, prise en main par vos équipes, et support continu pour ajuster les contraintes au fil de l'usage.</p></div>
     </div>
   </div>
 </section>
