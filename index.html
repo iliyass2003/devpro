@@ -290,6 +290,13 @@
   .cat-body ul li{font-size:0.85rem;color:var(--text-gray);display:flex;gap:0.55rem;align-items:flex-start;}
   .cat-body ul li i{color:var(--blue);margin-top:0.25rem;font-size:0.65rem;}
   .cat-complexity{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line);}
+  .cat-link{
+    display:inline-flex;align-items:center;gap:0.6rem;margin-top:1.4rem;padding-top:1.2rem;
+    border-top:1px solid var(--line);font-size:0.86rem;font-weight:500;color:var(--blue)!important;
+    text-decoration:none;width:100%;
+  }
+  .cat-link i{font-size:0.78rem;}
+  .cat-link.soon{color:var(--text-dim)!important;}
 
   @media(max-width:1024px){
     .cat-grid{grid-template-columns:1fr;}
@@ -472,6 +479,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Combine trois sous-problèmes couplés (affectation dépôt, choix du véhicule, séquencement) — métaheuristiques à grand voisinage (ALNS) ou décomposition avec heuristique de coordination.</p>
             </div>
+            <a href="LIEN_A_REMPLACER_MDHFVRPTW" class="cat-link" target="_blank" rel="noopener">Essayer cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -517,6 +525,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Extension du VRP dynamique — heuristiques d'insertion rapide (cheapest insertion, regret-based) plutôt que des métaheuristiques lentes, pour respecter la contrainte de temps de calcul.</p>
             </div>
+            <a href="LIEN_A_REMPLACER_VRP_DYNAMIQUE" class="cat-link" target="_blank" rel="noopener">Essayer cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -562,6 +571,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Extension du VRP classique, plus contrainte — métaheuristiques hybrides (recherche à voisinage large, ALNS) en raison du couplage temps/énergie.</p>
             </div>
+            <a href="LIEN_A_REMPLACER_EVRPTW" class="cat-link" target="_blank" rel="noopener">Essayer cette solution <i class="fas fa-arrow-right"></i></a>
           </div>
         </details>
 
@@ -607,6 +617,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>NP-difficile (généralisation du bin packing) — heuristiques constructives (extreme points, guillotine cut) combinées à une recherche locale.</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
@@ -652,6 +663,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Problème d'optimisation stochastique ou en programmation linéaire mixte selon le niveau de détail (demande déterministe vs. incertaine).</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
@@ -695,6 +707,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>NP-difficile, plus contraint qu'un VRP classique du fait des relations de précédence — métaheuristiques (ALNS, recherche tabou) adaptées à l'appariement collecte/livraison.</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
@@ -751,6 +764,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Problème d'affectation quadratique (QAP) simplifié — heuristiques de tri par fréquence (ABC/Pareto) combinées à une recherche locale pour les contraintes de compatibilité.</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
@@ -796,6 +810,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>NP-difficile (proche du bin packing avec contrainte de similarité spatiale) — heuristiques gloutonnes (seed order + saving algorithm) ou clustering suivi d'un ajustement de capacité.</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
@@ -841,6 +856,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Cas particulier du TSP sur un graphe contraint — algorithme de Ratliff & Rosenthal (optimal en temps polynomial pour la topologie classique) ou heuristiques (stratégie en S) pour les entrepôts non standards.</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
@@ -886,6 +902,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Proche d'un ordonnancement de machines parallèles avec fenêtres — programmation linéaire en nombres entiers pour un nombre restreint de quais, ou heuristiques de liste priorisée en temps réel.</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
@@ -931,6 +948,7 @@
               <h5 style="margin-top:0;">Complexité</h5>
               <p>Optimisation sous incertitude (programmation stochastique ou robuste selon la qualité des prévisions) — programmation linéaire multi-période ou heuristiques de réallocation périodique.</p>
             </div>
+            <a href="https://meliani.pythonanywhere.com/" class="cat-link soon" target="_blank" rel="noopener"><i class="fas fa-clock"></i> Bientôt disponible — voir l'app</a>
           </div>
         </details>
 
