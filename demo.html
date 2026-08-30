@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Démo — Optimisation de tournées en direct | OptiFlux</title>
+<meta name="description" content="Testez l'application en ligne d'optimisation de tournées OptiFlux : importez vos points de livraison et obtenez l'itinéraire optimal en quelques secondes.">
+<link rel="canonical" href="https://optiflux.example.com/demo.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Démo — Optimisation de tournées | OptiFlux">
+<meta property="og:description" content="Importez vos points de livraison et obtenez l'itinéraire optimal en quelques secondes.">
+<meta property="og:url" content="https://optiflux.example.com/demo.html">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="nav-item">
+        <a href="solutions.html" onclick="toggleNavItem(event,this)">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="nav-dropdown">
+          <a href="solutions.html#transport">Transport & Tournées <span class="count">06</span></a>
+          <a href="solutions.html#entreposage">Entreposage & Préparation <span class="count">05</span></a>
+        </div>
+      </li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="demo.html" class="active">Démo</a></li>
+      <li><a href="contact.html" class="nav-cta">Discuter du projet</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <a href="index.html">Accueil</a><span class="sep">/</span><span class="current">Démo</span>
+</nav>
+
+<section class="demo" style="border-top:none;padding-top:2rem;">
+  <div class="section-inner demo-grid">
+    <div class="demo-content fade-in">
+      <div class="demo-badge"><i class="fas fa-play-circle"></i> Démo — Optimisation de Tournées</div>
+      <h1>Regardez l'algorithme recalculer une tournée en temps réel</h1>
+      <p>Cette démo montre le module de tournées (fiche technique <a href="solutions.html#mdhfvrptw" style="color:var(--blue);">MDHFVRPTW</a>) sur un cas réel : import des points de livraison, calcul de l'itinéraire optimal, puis comparaison avant/après sur la distance et le temps de trajet.</p>
+      <ul class="demo-list">
+        <li><span class="num">01</span>Import d'une liste de points à livrer ou visiter</li>
+        <li><span class="num">02</span>Calcul de l'itinéraire optimal</li>
+        <li><span class="num">03</span>Comparaison chiffrée avant / après optimisation</li>
+      </ul>
+      <a href="https://meliani.pythonanywhere.com/" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Essayer l'app en direct</a>
+      <p class="demo-note">Cette démo couvre le module Tournées & Itinéraires. Les 10 autres solutions du catalogue se testent sur devis — <a href="contact.html" style="color:var(--blue);">décrivez votre cas</a>.</p>
+    </div>
+    <div class="demo-video fade-in">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/jgzR7U_dFIg"
+        title="Démo OptiFlux — Optimisation de Tournées"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <h2>Besoin d'une solution qui n'est pas encore en ligne ?</h2>
+    <p>Le catalogue couvre 11 classes de problèmes — dites-nous lequel vous concerne et on cadre le projet ensemble.</p>
+    <div class="contact-row">
+      <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="contact-btn whatsapp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+      </a>
+      <a href="contact.html" class="contact-btn"><i class="fas fa-envelope"></i> Remplir le formulaire</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+        <p>Entreprise d'optimisation logistique et de consulting en recherche opérationnelle.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="solutions.html#transport">Transport & Tournées</a></li>
+          <li><a href="solutions.html#entreposage">Entreposage & Préparation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Entreprise</h5>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 OptiFlux — Solutions d'optimisation combinatoire.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-contact">
+  <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="whatsapp-fab" target="_blank" rel="noopener" title="Contacter sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

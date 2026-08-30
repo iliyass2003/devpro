@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Ingénieurs en optimisation logistique | OptiFlux</title>
+<meta name="description" content="OptiFlux réunit des ingénieurs en développement, data & optimisation et recherche opérationnelle pour transformer vos problèmes logistiques en outils fiables et automatisés.">
+<link rel="canonical" href="https://optiflux.example.com/a-propos.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="À propos — OptiFlux">
+<meta property="og:description" content="Ingénieurs dev, data & optimisation, recherche opérationnelle. Notre méthode, de la modélisation au support.">
+<meta property="og:url" content="https://optiflux.example.com/a-propos.html">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="nav-item">
+        <a href="solutions.html" onclick="toggleNavItem(event,this)">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="nav-dropdown">
+          <a href="solutions.html#transport">Transport & Tournées <span class="count">06</span></a>
+          <a href="solutions.html#entreposage">Entreposage & Préparation <span class="count">05</span></a>
+        </div>
+      </li>
+      <li><a href="a-propos.html" class="active">À propos</a></li>
+      <li><a href="demo.html">Démo</a></li>
+      <li><a href="contact.html" class="nav-cta">Discuter du projet</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <a href="index.html">Accueil</a><span class="sep">/</span><span class="current">À propos</span>
+</nav>
+
+<section class="hero compact" id="hero">
+  <div class="hero-container single">
+    <div class="hero-content">
+      <div class="eyebrow">[ À propos ]</div>
+      <h1 class="medium">Une équipe d'ingénieurs, pas une agence généraliste</h1>
+      <p>OptiFlux est une entreprise spécialisée dans les solutions d'optimisation logistique et le consulting en supply chain. Nous transformons un problème opérationnel réel — une tournée, un entrepôt, une flotte — en un modèle mathématique rigoureux, puis en un outil que vos équipes utilisent tous les jours.</p>
+      <p>Notre équipe réunit des ingénieurs en développement, des ingénieurs data & optimisation, et des spécialistes en recherche opérationnelle. Cette combinaison nous permet de couvrir tout le cycle : modélisation du problème, résolution algorithmique, développement du produit, et intégration à vos systèmes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" style="border-top:none;">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="section-label">// Expertise</div>
+      <h2 class="section-title">Trois compétences, un seul livrable</h2>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-card">
+        <i class="fas fa-code"></i>
+        <h4>Ingénierie logicielle</h4>
+        <p>Développement du produit final — interface, API, automatisation — pour que la solution s'intègre à vos outils sans friction.</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-chart-line"></i>
+        <h4>Data & Optimisation</h4>
+        <p>Modélisation des contraintes réelles, préparation des données, choix des algorithmes adaptés à la taille et à la complexité de votre problème.</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-diagram-project"></i>
+        <h4>Recherche Opérationnelle</h4>
+        <p>Formalisation mathématique du problème et sélection des méthodes de résolution (métaheuristiques, programmation linéaire, heuristiques dédiées).</p>
+      </div>
+    </div>
+    <div class="about-trust fade-in">
+      <div class="about-trust-item"><i class="fas fa-lock"></i><span>Vos données et votre besoin restent confidentiels, du premier échange à la livraison.</span></div>
+      <div class="about-trust-item"><i class="fas fa-gears"></i><span>Chaque solution est automatisée et connectée à vos outils existants, pas livrée comme un script isolé.</span></div>
+      <div class="about-trust-item"><i class="fas fa-headset"></i><span>Support et ajustements inclus après la mise en production.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="methode">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="section-label">// Notre méthode</div>
+      <h2 class="section-title">De votre problème à l'algorithme livré</h2>
+      <p class="section-sub">Un déroulé simple, pensé pour un problème d'optimisation, pas pour un site vitrine.</p>
+    </div>
+    <div class="process-grid">
+      <div class="pstep fade-in"><span class="pnum mono">01</span><h4>Cadrage</h4><p>On identifie précisément le problème, les contraintes réelles et l'objectif à minimiser ou maximiser.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">02</span><h4>Modélisation</h4><p>Le problème est formalisé et testé sur vos données pour valider la faisabilité avant tout développement.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">03</span><h4>Automatisation</h4><p>L'algorithme est automatisé et connecté à vos outils existants (WMS, ERP, tableur) pour tourner sans intervention manuelle.</p></div>
+      <div class="pstep fade-in"><span class="pnum mono">04</span><h4>Déploiement & Support</h4><p>Mise en production, prise en main par vos équipes, et support continu pour ajuster les contraintes au fil de l'usage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <h2>Envie de travailler avec nous ?</h2>
+    <p>Décrivez votre cas — tournées, ordonnancement, ou autre problème logistique — et on vous dit en quelques minutes si c'est faisable.</p>
+    <div class="contact-row">
+      <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="contact-btn whatsapp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+      </a>
+      <a href="contact.html" class="contact-btn"><i class="fas fa-envelope"></i> Remplir le formulaire</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+        <p>Entreprise d'optimisation logistique et de consulting en recherche opérationnelle.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="solutions.html#transport">Transport & Tournées</a></li>
+          <li><a href="solutions.html#entreposage">Entreposage & Préparation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Entreprise</h5>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 OptiFlux — Solutions d'optimisation combinatoire.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-contact">
+  <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="whatsapp-fab" target="_blank" rel="noopener" title="Contacter sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

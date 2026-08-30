@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogue des solutions d'optimisation logistique — OptiFlux</title>
+<meta name="description" content="11 classes de problèmes d'optimisation logistique déjà modélisées : VRP multi-dépôts, flotte électrique, bin packing, slotting, picker routing, planification des quais et plus.">
+<link rel="canonical" href="https://optiflux.example.com/solutions.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Catalogue des solutions d'optimisation logistique — OptiFlux">
+<meta property="og:description" content="11 classes de problèmes déjà modélisées : tournées, entreposage, flotte, préparation de commandes.">
+<meta property="og:url" content="https://optiflux.example.com/solutions.html">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="nav-item">
+        <a href="solutions.html" class="active" onclick="toggleNavItem(event,this)">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="nav-dropdown">
+          <a href="#transport">Transport & Tournées <span class="count">06</span></a>
+          <a href="#entreposage">Entreposage & Préparation <span class="count">05</span></a>
+        </div>
+      </li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="demo.html">Démo</a></li>
+      <li><a href="contact.html" class="nav-cta">Discuter du projet</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <a href="index.html">Accueil</a><span class="sep">/</span><span class="current">Solutions</span>
+</nav>
+
+<section class="catalogue" id="catalogue" style="padding-top:2rem;">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="spec-tag"><i class="fas fa-microchip"></i> Catalogue</div>
+      <h1 class="section-title">Le catalogue de problèmes, en détail</h1>
+      <p class="section-sub">Onze classes de problèmes déjà modélisées, réparties en deux familles. Cliquez sur une fiche pour voir le modèle complet — contraintes, données, KPIs, complexité. Votre cas ne rentre pas exactement dans un de ces moules ? <a href="contact.html" style="color:var(--blue);">Décrivez-le-nous</a>, on modélise sur mesure.</p>
+    </div>
+
+    <!-- TRANSPORT & TOURNÉES -->
+    <div class="cat-group" id="transport">
+      <div class="cat-group-head fade-in">
+        <h2><i class="fas fa-route"></i> Transport & Tournées</h2>
+        <span class="cat-count">6 problèmes modélisés</span>
+      </div>
+      <div class="cat-grid fade-in">
+
+        <details class="cat-card" id="mdhfvrptw">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">01 · MDHFVRPTW</span>
+              <h3>VRP Multi-Dépôts à Flotte Hétérogène avec Fenêtres Horaires</h3>
+              <p>Plusieurs entrepôts, une flotte hétérogène (fourgon, 12t, 19t) et des créneaux clients imposés — décider quel dépôt, quel véhicule, quel ordre.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Minimiser le coût total (kilométrage, coût fixe par véhicule utilisé, coût horaire chauffeur) en couvrant tous les clients depuis le dépôt le plus pertinent, avec le véhicule le mieux adapté.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Affectation client → dépôt à déterminer (pas fixée à l'avance)</li>
+                  <li><i class="fas fa-check"></i>Plusieurs types de véhicules par dépôt, capacité et coût propres</li>
+                  <li><i class="fas fa-check"></i>Chaque tournée part et revient au même dépôt</li>
+                  <li><i class="fas fa-check"></i>Nombre de véhicules limité par type et par dépôt</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Fenêtres horaires strictes ou souples par client</li>
+                  <li><i class="fas fa-check"></i>Durée maximale de conduite / réglementation du travail</li>
+                  <li><i class="fas fa-check"></i>Compatibilité produit/véhicule (chaîne du froid)</li>
+                  <li><i class="fas fa-check"></i>Zones à accès restreint selon le gabarit</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Position et capacité de chaque dépôt, parc de véhicules (type, capacité, coût), clients (demande, fenêtres horaires, contraintes produit), matrice de distances/temps.</p></div>
+              <div><h4>Données de sortie</h4><p>Affectation client → dépôt → véhicule → position dans la tournée, coût par tournée, taux d'utilisation par dépôt.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Coût total, taux de remplissage moyen par type de véhicule, équilibrage de charge entre dépôts, taux de respect des fenêtres horaires.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Combine trois sous-problèmes couplés (affectation dépôt, choix du véhicule, séquencement) — métaheuristiques à grand voisinage (ALNS) ou décomposition avec heuristique de coordination.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0VRP%20Multi-D%C3%A9p%C3%B4ts%20%C3%A0%20Flotte%20H%C3%A9t%C3%A9rog%C3%A8ne%20%28MDHFVRPTW%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">02 · VRP Dynamique</span>
+              <h3>VRP Dynamique et Stochastique (Recalcul en Temps Réel)</h3>
+              <p>Commandes en flux continu, tournées déjà engagées à ajuster sans les perturber — le cas du quick-commerce et de la livraison à la demande.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Minimiser le coût total et le temps de réponse aux nouvelles commandes, en réoptimisant les tournées en cours à chaque nouvel événement (commande, retard, annulation, incident trafic).</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Une partie de la demande inconnue au calcul initial (stochastique)</li>
+                  <li><i class="fas fa-check"></i>Segments de tournée déjà engagés non modifiables</li>
+                  <li><i class="fas fa-check"></i>Décision d'accepter/refuser une commande selon la capacité résiduelle</li>
+                  <li><i class="fas fa-check"></i>Temps de calcul très court imposé (quelques secondes)</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Fenêtres horaires promises au client</li>
+                  <li><i class="fas fa-check"></i>Capacité résiduelle du véhicule à l'instant du recalcul</li>
+                  <li><i class="fas fa-check"></i>Position et disponibilité réelle des véhicules (GPS)</li>
+                  <li><i class="fas fa-check"></i>Trafic routier en temps réel</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Flux de commandes en temps réel, position GPS live des véhicules, tournées en cours, temps de trajet dynamiques (API trafic).</p></div>
+              <div><h4>Données de sortie</h4><p>Tournées mises à jour en continu, décision d'acceptation/refus par commande, ETA actualisée pour chaque client.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Taux de commandes acceptées, respect des ETA communiquées, temps de recalcul, distance additionnelle par commande insérée.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Extension du VRP dynamique — heuristiques d'insertion rapide (cheapest insertion, regret-based) plutôt que des métaheuristiques lentes, pour respecter la contrainte de temps de calcul.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0VRP%20Dynamique%20et%20Stochastique%20%28recalcul%20temps%20r%C3%A9el%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">03 · E-VRPTW</span>
+              <h3>VRP avec Fenêtres Horaires et Flotte Électrique</h3>
+              <p>Créneaux de livraison imposés et autonomie limitée des véhicules électriques, qui nécessitent des arrêts de recharge dans la tournée.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Minimiser le coût total (distance, temps, nombre de véhicules, coût de recharge) en respectant les fenêtres horaires et l'autonomie des véhicules.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Fenêtre horaire stricte ou souple (avec pénalité) par client</li>
+                  <li><i class="fas fa-check"></i>Autonomie limitée, recharge uniquement à des stations dédiées</li>
+                  <li><i class="fas fa-check"></i>Temps de recharge non négligeable à insérer dans la tournée</li>
+                  <li><i class="fas fa-check"></i>Consommation dépendante de la charge transportée et du relief</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Capacité de charge du véhicule</li>
+                  <li><i class="fas fa-check"></i>Horaires d'ouverture des stations de recharge</li>
+                  <li><i class="fas fa-check"></i>Coût de l'énergie et coût horaire du chauffeur</li>
+                  <li><i class="fas fa-check"></i>Temps de service par client</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Clients avec fenêtres horaires et demandes, position des stations de recharge, autonomie et vitesse de recharge par véhicule, profil de consommation.</p></div>
+              <div><h4>Données de sortie</h4><p>Tournées avec horaires d'arrivée, arrêts de recharge planifiés, niveau de batterie estimé tout au long du trajet.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Taux de respect des fenêtres horaires, coût énergétique total, nombre d'arrêts de recharge, distance totale.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Extension du VRP classique, plus contrainte — métaheuristiques hybrides (recherche à voisinage large, ALNS) en raison du couplage temps/énergie.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0VRP%20avec%20Fen%C3%AAtres%20Horaires%20et%20Flotte%20%C3%89lectrique%20%28E-VRPTW%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">04 · Bin Packing 3D</span>
+              <h3>Optimisation de Chargement pour Camions</h3>
+              <p>Disposer colis et palettes de tailles différentes dans l'espace de chargement, en respectant l'ordre de livraison.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Maximiser le taux de remplissage du véhicule (ou minimiser le nombre de véhicules nécessaires) tout en respectant les contraintes physiques et logistiques.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Dimensions 3D de chaque colis et du véhicule</li>
+                  <li><i class="fas fa-check"></i>Pas de chevauchement entre colis</li>
+                  <li><i class="fas fa-check"></i>Stabilité du chargement (poids lourd en bas)</li>
+                  <li><i class="fas fa-check"></i>Ordre de déchargement LIFO selon la tournée</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Poids total maximal du véhicule (PTAC)</li>
+                  <li><i class="fas fa-check"></i>Répartition du poids par essieu</li>
+                  <li><i class="fas fa-check"></i>Colis fragiles ou empilables limités en hauteur</li>
+                  <li><i class="fas fa-check"></i>Colis non-gerbables ou orientation imposée</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Liste des colis (dimensions, poids, fragilité, ordre de livraison), dimensions du véhicule, contraintes de poids par essieu.</p></div>
+              <div><h4>Données de sortie</h4><p>Plan de chargement 3D, position de chaque colis, taux de remplissage volumique et pondéral.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Taux de remplissage, nombre de véhicules économisés, respect de l'ordre de déchargement, respect des limites de poids par essieu.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>NP-difficile (généralisation du bin packing) — heuristiques constructives (extreme points, guillotine cut) combinées à une recherche locale.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Optimisation%20de%20Chargement%20%28Bin%20Packing%203D%29%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">05 · Fleet Sizing</span>
+              <h3>Dimensionnement et Composition de Flotte</h3>
+              <p>Décider combien de véhicules acheter ou louer, et de quels types, pour couvrir la demande de livraison au meilleur coût.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Minimiser le coût total de possession et d'exploitation de la flotte (achat/location, carburant, entretien) tout en couvrant la demande prévue avec un niveau de service cible.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Demande variable dans le temps (saisonnalité, pics)</li>
+                  <li><i class="fas fa-check"></i>Plusieurs types de véhicules, coûts et capacités différents</li>
+                  <li><i class="fas fa-check"></i>Contrainte de niveau de service (taux de livraison à temps)</li>
+                  <li><i class="fas fa-check"></i>Durée de vie et valeur de revente des véhicules</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Budget d'investissement disponible</li>
+                  <li><i class="fas fa-check"></i>Réglementation environnementale (ZFE, quotas)</li>
+                  <li><i class="fas fa-check"></i>Capacité de stationnement / entretien au dépôt</li>
+                  <li><i class="fas fa-check"></i>Contrats de location minimum</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Historique ou prévision de la demande, coûts par type de véhicule, contraintes réglementaires, budget disponible.</p></div>
+              <div><h4>Données de sortie</h4><p>Composition optimale de la flotte, plan d'investissement, coût total estimé sur la période.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Coût total de possession, taux de couverture de la demande, taux d'utilisation des véhicules, empreinte carbone de la flotte.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Problème d'optimisation stochastique ou en programmation linéaire mixte selon le niveau de détail (demande déterministe vs. incertaine).</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Dimensionnement%20et%20Composition%20de%20Flotte%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">06 · Pickup & Delivery</span>
+              <h3>Logistique Retour — Livraison et Collecte Simultanées</h3>
+              <p>Combiner livraison et collecte de retours dans le même passage (e-commerce, consigne, déchets recyclables).</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Minimiser la distance totale tout en respectant les contraintes de précédence entre collecte et livraison et la capacité du véhicule à chaque instant.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Point de collecte et de livraison liés par demande</li>
+                  <li><i class="fas fa-check"></i>Capacité du véhicule variant tout au long de la tournée</li>
+                  <li><i class="fas fa-check"></i>Un même client peut être collecte et livraison pour d'autres demandes</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Fenêtres horaires côté collecte et côté livraison</li>
+                  <li><i class="fas fa-check"></i>Temps de service différent selon collecte ou livraison</li>
+                  <li><i class="fas fa-check"></i>Compatibilité des marchandises transportées ensemble</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Liste des demandes (point de collecte, point de livraison, volume, fenêtres horaires), capacité du véhicule, matrice de distances/temps.</p></div>
+              <div><h4>Données de sortie</h4><p>Séquence de collecte/livraison par véhicule, charge du véhicule à chaque étape, distance et durée totale.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Distance totale, taux de respect des fenêtres horaires, taux d'utilisation de la capacité, nombre de véhicules nécessaires.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>NP-difficile, plus contraint qu'un VRP classique du fait des relations de précédence — métaheuristiques (ALNS, recherche tabou) adaptées à l'appariement collecte/livraison.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Logistique%20Retour%20-%20Livraison%20et%20Collecte%20Simultan%C3%A9es%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- ENTREPOSAGE -->
+    <div class="cat-group" id="entreposage">
+      <div class="cat-group-head fade-in">
+        <h2><i class="fas fa-warehouse"></i> Entreposage & Préparation</h2>
+        <span class="cat-count">5 problèmes modélisés</span>
+      </div>
+      <div class="cat-grid fade-in">
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">07 · SLAP</span>
+              <h3>Slotting — Affectation Optimale des Emplacements de Stockage</h3>
+              <p>Placer chaque référence au bon emplacement pour éviter les trajets inutiles à chaque préparation de commande.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Déterminer l'affectation SKU → emplacement qui minimise la distance totale de manutention cumulée, compte tenu de la fréquence de sortie de chaque référence.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Un emplacement n'accueille qu'une référence (ou nombre limité)</li>
+                  <li><i class="fas fa-check"></i>Volume de stockage minimal par référence</li>
+                  <li><i class="fas fa-check"></i>Références à forte rotation proches des zones d'expédition</li>
+                  <li><i class="fas fa-check"></i>Compatibilité entre références (alimentaire/chimique, etc.)</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Capacité physique de chaque emplacement (poids, volume, hauteur)</li>
+                  <li><i class="fas fa-check"></i>Zones réglementées (froid, matières dangereuses, incendie)</li>
+                  <li><i class="fas fa-check"></i>Accessibilité selon le type d'engin de manutention</li>
+                  <li><i class="fas fa-check"></i>Saisonnalité de la demande (réaffectation périodique)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Liste des références (dimensions, poids, fréquence de sortie, contraintes), plan de l'entrepôt avec emplacements disponibles, distances vers les zones d'expédition.</p></div>
+              <div><h4>Données de sortie</h4><p>Affectation SKU → emplacement, carte de chaleur des zones de forte activité, plan de réimplantation.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Distance de manutention cumulée annuelle, taux d'utilisation de la surface de stockage, temps moyen de trajet par ligne de commande.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Problème d'affectation quadratique (QAP) simplifié — heuristiques de tri par fréquence (ABC/Pareto) combinées à une recherche locale pour les contraintes de compatibilité.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Slotting%20-%20Affectation%20des%20Emplacements%20de%20Stockage%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">08 · Order Batching</span>
+              <h3>Regroupement Optimal des Commandes pour la Préparation</h3>
+              <p>Déterminer quelles commandes regrouper dans un même passage de préparation, sans dépasser la capacité de transport.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Minimiser le nombre total de tournées de préparation (ou la distance totale parcourue par les préparateurs) en regroupant les commandes de façon optimale.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Chaque commande appartient à un seul lot</li>
+                  <li><i class="fas fa-check"></i>Somme des volumes/poids d'un lot ≤ capacité du contenant</li>
+                  <li><i class="fas fa-check"></i>Commandes urgentes isolées ou traitées en priorité</li>
+                  <li><i class="fas fa-check"></i>Un même article peut apparaître dans plusieurs commandes d'un lot</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Délai de préparation maximal par commande (SLA client)</li>
+                  <li><i class="fas fa-check"></i>Nombre de préparateurs disponibles simultanément</li>
+                  <li><i class="fas fa-check"></i>Capacité de la zone de tri après préparation</li>
+                  <li><i class="fas fa-check"></i>Heures de coupure pour l'expédition (cut-off transporteur)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Liste des commandes du jour (articles, quantités, délai limite), capacité des contenants de préparation, plan de l'entrepôt.</p></div>
+              <div><h4>Données de sortie</h4><p>Répartition des commandes en lots, liste de préparation consolidée par lot, ordre de traitement des lots.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Nombre de lignes préparées par heure, nombre de tournées économisées, taux de respect des délais de préparation.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>NP-difficile (proche du bin packing avec contrainte de similarité spatiale) — heuristiques gloutonnes (seed order + saving algorithm) ou clustering suivi d'un ajustement de capacité.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Order%20Batching%20-%20Regroupement%20des%20Commandes%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">09 · Picker Routing</span>
+              <h3>Séquencement Optimal du Trajet de Préparation</h3>
+              <p>Déterminer l'ordre de parcours des allées pour minimiser la distance, sans pouvoir couper à travers les rayonnages.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Minimiser la distance ou le temps de trajet du préparateur pour collecter l'ensemble des articles de sa liste.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Déplacement contraint par la structure des allées (graphe)</li>
+                  <li><i class="fas fa-check"></i>Sens de circulation imposé sur certaines allées</li>
+                  <li><i class="fas fa-check"></i>Retour obligatoire au point de dépose/tri en fin de tournée</li>
+                  <li><i class="fas fa-check"></i>Largeur d'allée limitant le croisement de préparateurs</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Zones à accès restreint ou temporairement bloquées</li>
+                  <li><i class="fas fa-check"></i>Ergonomie : hauteur de prélèvement, poids porté cumulé</li>
+                  <li><i class="fas fa-check"></i>Priorité de prélèvement (fragiles en dernier, lourds en premier)</li>
+                  <li><i class="fas fa-check"></i>Temps de prélèvement fixe par article</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Plan de l'entrepôt sous forme de graphe (allées, intersections, sens de circulation), liste des emplacements à visiter.</p></div>
+              <div><h4>Données de sortie</h4><p>Séquence de visite optimale des emplacements, distance/temps de trajet estimé, itinéraire affiché sur terminal ou app mobile.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Distance moyenne par ligne de commande, temps de préparation moyen, taux de conformité au parcours recommandé.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Cas particulier du TSP sur un graphe contraint — algorithme de Ratliff & Rosenthal (optimal en temps polynomial pour la topologie classique) ou heuristiques (stratégie en S) pour les entrepôts non standards.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Picker%20Routing%20-%20S%C3%A9quencement%20du%20Trajet%20de%20Pr%C3%A9paration%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">10 · Dock Scheduling</span>
+              <h3>Planification des Quais de Chargement/Déchargement</h3>
+              <p>Affecter les camions à des quais et créneaux horaires pour éviter files d'attente et saturation.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Affecter chaque camion (arrivée ou départ) à un quai et un créneau horaire qui minimise le temps d'attente total et maximise l'utilisation des quais disponibles.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Chaque quai ne traite qu'un camion à la fois</li>
+                  <li><i class="fas fa-check"></i>Durée de traitement variable selon le camion et la marchandise</li>
+                  <li><i class="fas fa-check"></i>Quais dédiés à un type d'opération (réception, expédition, froid)</li>
+                  <li><i class="fas fa-check"></i>Séquence dépendant de contraintes en aval (marchandise prioritaire)</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Horaires d'ouverture et effectifs disponibles par créneau</li>
+                  <li><i class="fas fa-check"></i>Pénalités de retard contractuelles avec les transporteurs</li>
+                  <li><i class="fas fa-check"></i>Temps de battement entre deux camions sur un même quai</li>
+                  <li><i class="fas fa-check"></i>Capacité de stockage tampon en cas d'arrivée anticipée</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Liste des camions attendus (heure prévue, durée de traitement estimée, type d'opération), nombre et caractéristiques des quais, contraintes de priorité.</p></div>
+              <div><h4>Données de sortie</h4><p>Planning quai × créneau horaire, heure d'arrivée recommandée par camion, temps d'attente estimé.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Temps d'attente moyen par camion, taux d'occupation des quais, nombre de créneaux respectés, temps de rotation moyen par quai.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Proche d'un ordonnancement de machines parallèles avec fenêtres — programmation linéaire en nombres entiers pour un nombre restreint de quais, ou heuristiques de liste priorisée en temps réel.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Planification%20des%20Quais%20de%20Chargement%2FD%C3%A9chargement%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+        <details class="cat-card">
+          <summary>
+            <div class="cat-summary-text">
+              <span class="cat-num mono">11 · Space Allocation</span>
+              <h3>Allocation Dynamique de l'Espace de Stockage</h3>
+              <p>Réallouer l'espace entre familles de produits selon la saisonnalité, sans réorganiser tout l'entrepôt à chaque fois.</p>
+            </div>
+            <span class="cat-toggle"><i class="fas fa-plus"></i></span>
+          </summary>
+          <div class="cat-body">
+            <h4>Objectif d'optimisation</h4>
+            <p>Déterminer la répartition de l'espace de stockage entre familles de produits sur une période donnée, en minimisant les coûts de rupture d'espace et de réorganisation.</p>
+            <div class="cat-body-grid">
+              <div>
+                <h4>Contraintes spécifiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Capacité totale de l'entrepôt fixe sur la période</li>
+                  <li><i class="fas fa-check"></i>Variation dans le temps du besoin d'espace par famille</li>
+                  <li><i class="fas fa-check"></i>Coût de déplacement d'une famille d'une zone à une autre</li>
+                  <li><i class="fas fa-check"></i>Espace minimal contractuel pour certains clients/familles</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Contraintes classiques</h4>
+                <ul>
+                  <li><i class="fas fa-check"></i>Zones physiquement dédiées (froid, hauteur, sécurité)</li>
+                  <li><i class="fas fa-check"></i>Délai de préavis avant réorganisation</li>
+                  <li><i class="fas fa-check"></i>Recours possible au stockage externe temporaire</li>
+                  <li><i class="fas fa-check"></i>Cohérence avec les contraintes de slotting (proximité picking)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cat-body-grid">
+              <div><h4>Données d'entrée</h4><p>Prévisions de volume de stock par famille sur la période, capacité totale et par zone, coûts de réorganisation et de stockage externe.</p></div>
+              <div><h4>Données de sortie</h4><p>Plan d'allocation d'espace par période, dates de réorganisation recommandées, besoin en stockage externe anticipé.</p></div>
+            </div>
+            <h4>KPIs</h4>
+            <p>Taux d'utilisation de l'espace, coût total de stockage externe évité, nombre de réorganisations nécessaires sur la période.</p>
+            <div class="cat-complexity">
+              <h4 style="margin-top:0;">Complexité</h4>
+              <p>Optimisation sous incertitude (programmation stochastique ou robuste selon la qualité des prévisions) — programmation linéaire multi-période ou heuristiques de réallocation périodique.</p>
+            </div>
+            <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20la%20solution%20%C2%AB%C2%A0Allocation%20Dynamique%20de%20l%27Espace%20de%20Stockage%C2%A0%C2%BB%2C%20pouvez-vous%20m%27en%20dire%20plus%20%3F" class="cat-link" target="_blank" rel="noopener">Demander cette solution <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <h2>Votre problème n'est pas dans la liste ?</h2>
+    <p>On modélise aussi les cas sur mesure. Décrivez votre besoin et on vous dit en quelques minutes si c'est faisable.</p>
+    <div class="contact-row">
+      <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="contact-btn whatsapp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+      </a>
+      <a href="contact.html" class="contact-btn"><i class="fas fa-envelope"></i> Remplir le formulaire</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+        <p>Entreprise d'optimisation logistique et de consulting en recherche opérationnelle.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="solutions.html#transport">Transport & Tournées</a></li>
+          <li><a href="solutions.html#entreposage">Entreposage & Préparation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Entreprise</h5>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 OptiFlux — Solutions d'optimisation combinatoire.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-contact">
+  <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="whatsapp-fab" target="_blank" rel="noopener" title="Contacter sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Décrivez votre projet d'optimisation | OptiFlux</title>
+<meta name="description" content="Contactez OptiFlux pour une analyse gratuite de votre besoin en optimisation logistique — formulaire, WhatsApp ou email.">
+<link rel="canonical" href="https://optiflux.example.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — OptiFlux">
+<meta property="og:description" content="Décrivez votre projet d'optimisation logistique et recevez une analyse gratuite.">
+<meta property="og:url" content="https://optiflux.example.com/contact.html">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="nav-item">
+        <a href="solutions.html" onclick="toggleNavItem(event,this)">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="nav-dropdown">
+          <a href="solutions.html#transport">Transport & Tournées <span class="count">06</span></a>
+          <a href="solutions.html#entreposage">Entreposage & Préparation <span class="count">05</span></a>
+        </div>
+      </li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="demo.html">Démo</a></li>
+      <li><a href="contact.html" class="nav-cta active">Discuter du projet</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <a href="index.html">Accueil</a><span class="sep">/</span><span class="current">Contact</span>
+</nav>
+
+<section class="contact-page" style="border-top:none;padding-top:2rem;">
+  <div class="section-inner">
+    <div class="section-head fade-in">
+      <div class="section-label">// Contact</div>
+      <h1 class="section-title">Décrivez votre projet</h1>
+      <p class="section-sub">Remplissez le formulaire ou écrivez-nous directement — on revient vers vous avec une première analyse gratuite.</p>
+    </div>
+
+    <div class="contact-layout fade-in">
+      <form class="contact-form" onsubmit="return submitContactForm(event)">
+        <div class="form-field">
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="company">Entreprise</label>
+          <input type="text" id="company" name="company">
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-field">
+          <label for="need">Type de besoin</label>
+          <select id="need" name="need">
+            <option value="Transport & Tournées">Transport & Tournées</option>
+            <option value="Entreposage & Préparation">Entreposage & Préparation</option>
+            <option value="Problème sur mesure">Problème sur mesure / autre</option>
+            <option value="Je ne sais pas encore">Je ne sais pas encore</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Décrivez votre besoin</label>
+          <textarea id="message" name="message" required placeholder="Ex : nous livrons depuis 2 dépôts avec 15 véhicules, on veut réduire le kilométrage journalier..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;"><i class="fas fa-paper-plane"></i> Envoyer ma demande</button>
+        <div class="copy-note" id="formNote">&nbsp;</div>
+      </form>
+
+      <div class="contact-side">
+        <h4>Autres moyens de nous joindre</h4>
+        <ul>
+          <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" target="_blank" rel="noopener" style="color:var(--white);text-decoration:none;">WhatsApp — réponse rapide</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:iliyass.meliani@gmail.com" style="color:var(--white);text-decoration:none;">iliyass.meliani@gmail.com</a></li>
+        </ul>
+        <h4>Ce qui se passe ensuite</h4>
+        <ul>
+          <li><i class="fas fa-check"></i> Analyse gratuite de votre besoin sous 48h</li>
+          <li><i class="fas fa-check"></i> Vos données restent confidentielles</li>
+          <li><i class="fas fa-check"></i> Devis clair avant tout engagement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo"><span class="dot"></span>OPTIFLUX</a>
+        <p>Entreprise d'optimisation logistique et de consulting en recherche opérationnelle.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="solutions.html#transport">Transport & Tournées</a></li>
+          <li><a href="solutions.html#entreposage">Entreposage & Préparation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Entreprise</h5>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 OptiFlux — Solutions d'optimisation combinatoire.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-contact">
+  <a href="https://wa.me/212608093489?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20d%27optimisation" class="whatsapp-fab" target="_blank" rel="noopener" title="Contacter sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
