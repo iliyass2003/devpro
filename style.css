@@ -26,14 +26,14 @@ a{color:inherit;}
 a:focus-visible, button:focus-visible, summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
 /* NAV */
-nav{
+#navbar{
   position:fixed;top:0;width:100%;z-index:1000;
   padding:1.4rem 0;
   background:var(--black);
   border-bottom:1px solid var(--line);
   transition:padding .2s ease;
 }
-nav.scrolled{padding:0.9rem 0;}
+#navbar.scrolled{padding:0.9rem 0;}
 .nav-container{max-width:1360px;margin:0 auto;padding:0 3rem;display:flex;justify-content:space-between;align-items:center;}
 .logo{display:flex;align-items:center;gap:0.6rem;font-weight:700;font-size:1.25rem;letter-spacing:0.5px;text-decoration:none;}
 .logo .dot{width:9px;height:9px;background:var(--blue);}
